@@ -23,6 +23,8 @@
             <x-input-label for="update_password_password" :value="__('New Password')" />
             <x-text-input id="update_password_password" name="password" type="password" class="" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password')" class="" />
+            {{--<x-text-input id="update_password_password" name="new_password" type="password" class="" autocomplete="new-password" />
+            <x-input-error :messages="$errors->updatePassword->get('new_password')" class="" />--}}
         </div>
 
         <div>
