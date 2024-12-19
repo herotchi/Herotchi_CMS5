@@ -23,7 +23,7 @@ return [
     ],
     'boolean'              => ':Attributeには、\'true\'か\'false\'を指定してください。',
     'can'                  => ':Attributeに権限のない値が含まれています。',
-    'confirmed'            => ':Attributeと:attribute確認が一致しません。',
+    'confirmed'            => ':Attributeと:attribute（確認用）が一致しません。',
     'contains'             => ':Attributeに必須項目が含まれていません。',
     'current_password'     => 'パスワードが正しくありません。',
     'date'                 => ':Attributeは、正しい日付ではありません。',
@@ -150,4 +150,12 @@ return [
     'uppercase'            => ':Attributeは、大文字で入力してください。',
     'url'                  => ':Attributeは、有効なURL形式で指定してください。',
     'uuid'                 => ':Attributeは、有効なUUIDである必要があります。',
+    'attributes' => [
+        'name'                  => '氏名',
+        'email'                 => 'メール',
+        'password'              => 'パスワード',
+        'password_confirmation' => 'パスワード（確認用）',
+        'current_password'      => '現在のパスワード',
+        'new_password'          => '新しいパスワード',
+    ],
 ];
