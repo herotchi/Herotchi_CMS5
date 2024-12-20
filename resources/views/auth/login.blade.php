@@ -5,43 +5,56 @@
     <form method="POST" action="{{ route('login') }}" novalidate>
         @csrf
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="" />
-        </div>
+        <div class="row g-3 card mt-3 pt-2 pb-4 px-4 shadow">
 
-        <!-- Password -->
-        <div class="">
-            <x-input-label for="password" :value="__('Password')" />
+            <!-- Email Address -->
+            <div class="col-12">
+                <x-input-label for="email" :value="__('Email')" :required="true" />
+                <x-text-input id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" 
+                    type="email" 
+                    name="email" 
+                    :value="old('email')" 
+                    required 
+                    autofocus />
+                <x-input-error :message="$errors->first('email')" />
+            </div>
 
-            <x-text-input id="password" class=""
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+            <!-- Password -->
+            <div class="col-12">
+                <x-input-label for="password" :value="__('Password')" :required="true" />
+                <x-text-input id="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                    type="password"
+                    name="password"
+                    required />
+                <x-input-error :message="$errors->first('password')" />
+            </div>
 
-            <x-input-error :messages="$errors->get('password')" class="" />
-        </div>
+            <!-- Remember Me -->
+            <div class="col-12">
+                <div class=" form-check">
+                    <input id="remember_me" class="form-check-input shadow-sm{{ $errors->has('remember') ? ' is-invalid' : '' }}" 
+                        type="checkbox" 
+                        name="remember">
+                    <label for="remember_me" class="">
+                        <span class="">{{ __('Remember me') }}</span>
+                    </label>
+                    <x-input-error :message="$errors->first('remember')" />
+                </div>
+            </div>
 
-        <!-- Remember Me -->
-        <div class="">
-            <label for="remember_me" class="">
-                <input id="remember_me" type="checkbox" class="" name="remember">
-                <span class="">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="">
-            @if (Route::has('password.request'))
-                <a class="" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="">
-                {{ __('Log in') }}
-            </x-primary-button>
+            <div class="col-12">
+                @if (Route::has('password.request'))
+                    <a class="" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+            </div>
+            
+            <div class="col-12">
+                <x-primary-button class="w-100">
+                    {{ __('Log in') }}
+                </x-primary-button>
+            </div>
         </div>
     </form>
 </x-guest-layout>
