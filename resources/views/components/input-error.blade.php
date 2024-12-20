@@ -1,9 +1,5 @@
-@props(['messages'])
+@props(['message'])
 
-@if ($messages)
-    <ul {{ $attributes->merge(['class' => '']) }}>
-        @foreach ((array) $messages as $message)
-            <li>{{ $message }}</li>
-        @endforeach
-    </ul>
+@if ($message)
+    <div {{ $attributes->merge(['class' => 'invalid-feedback']) }}>{{ $message }}</div>    
 @endif
