@@ -13,13 +13,25 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        <style>
+            body {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+            .no-header {
+                width: 100%;
+                max-width: 440px;
+                padding: 15px;
+                margin: auto;
+        }
+        </style>
 
         <!-- Scripts -->
         {{--@vite(['resources/css/app.css', 'resources/js/app.js'])--}}
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     </head>
-    <body class="">
-        <div class="">
+    <body class="d-flex align-items-center bg-body-tertiary h-100">
+        {{--<div class="">
             <div>
                 <a href="/">
                     <x-application-logo class="" />
@@ -29,6 +41,16 @@
             <div class="">
                 {{ $slot }}
             </div>
+        </div>--}}
+        <div class="container">
+            <main>
+                <div class="no-header">
+                    <div class="text-center">
+                        <x-application-logo class="my-4" alt="" width="57" height="57" />
+                    </div>
+                    {{ $slot }}
+                </div>
+            </main>
         </div>
     </body>
 </html>
