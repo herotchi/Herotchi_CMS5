@@ -5,7 +5,7 @@
 
         <div class="row g-3 card mt-3 pt-2 pb-4 px-4 shadow">
     
-            <div class="">
+            <div class="text-secondary">
                 {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
             </div>
 
