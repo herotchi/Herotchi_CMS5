@@ -20,7 +20,7 @@
             }
             .no-header {
                 width: 100%;
-                max-width: 440px;
+                max-width: 480px;
                 padding: 15px;
                 margin: auto;
         }
