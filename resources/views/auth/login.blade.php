@@ -1,11 +1,13 @@
 <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="" :status="session('status')" />
+    
 
     <form method="POST" action="{{ route('login') }}" novalidate>
         @csrf
 
         <div class="row g-3 card mt-3 pt-2 pb-4 px-4 shadow">
+
+            <!-- Session Status -->
+            <x-auth-session-status class="" :status="session('status')" />
 
             <!-- Email Address -->
             <div class="col-12">
