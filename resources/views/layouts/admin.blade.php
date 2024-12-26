@@ -18,19 +18,11 @@
         {{--@vite(['resources/css/app.css', 'resources/js/app.js'])--}}
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     </head>
-    <body class="">
+    <body class="bg-body-tertiary h-100">
         <div class="">
             @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="">
-                    <div class="">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
-
+        </div>
+        <div class="container">
             <!-- Page Content -->
             <main>
                 {{ $slot }}

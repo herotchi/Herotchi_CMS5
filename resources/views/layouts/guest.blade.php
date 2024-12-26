@@ -30,7 +30,7 @@
         {{--@vite(['resources/css/app.css', 'resources/js/app.js'])--}}
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     </head>
-    <body class="d-flex align-items-center bg-body-tertiary h-100">
+    <body class="bg-body-tertiary h-100">
         {{--<div class="">
             <div>
                 <a href="/">
