@@ -15,7 +15,7 @@
                         @if($page=='admin.news.add' || $page=='admin.news.list' || $page=='admin.news.detail' || $page=='admin.news.edit')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">お知らせ
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item @if($page=='admin.news.add') active @endif" href="{{ route('admin.top') }}">お知らせ登録</a></li>
+                        <li><a class="dropdown-item @if($page=='admin.news.create') active @endif" href="{{ route('admin.news.create') }}">お知らせ登録</a></li>
                         <li><a class="dropdown-item @if($page=='admin.news.list') active @endif" href="{{ route('admin.top') }}">お知らせ一覧</a></li>
                     </ul>
                 </li>
