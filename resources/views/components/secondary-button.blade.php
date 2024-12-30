@@ -1,3 +1,7 @@
-<button {{ $attributes->merge(['type' => 'button', 'class' => '']) }}>
+@props(['href' => route('admin.top')])
+{{--<button {{ $attributes->merge(['type' => 'button', 'class' => '']) }}>
     {{ $slot }}
-</button>
+</button>--}}
+<a class="btn btn-secondary" href="{{ $href }}" role="button">
+    {{ $slot }}
+</a>

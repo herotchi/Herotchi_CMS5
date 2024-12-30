@@ -157,5 +157,12 @@ return [
         'password_confirmation' => 'パスワード（確認用）',
         'current_password'      => '現在のパスワード',
         'new_password'          => '新しいパスワード',
+        'title'                 => 'タイトル',
+        'link_flg'              => 'リンク設定',
+        'url'                   => 'URL',
+        'overview'              => '概要',
+        'release_date'          => '公開日',
+        'release_flg'           => '表示設定',
+
     ],
 ];
