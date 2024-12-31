@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\News\CreateRequest;
+use App\Http\Requests\Admin\News\IndexRequest;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Models\News;
@@ -29,7 +30,17 @@ class NewsController extends Controller
     }
 
 
-    public function index()
+    public function index(IndexRequest $request): View
+    {
+        $input = $request->validated();
+        $model = new News();
+        $lists = $model->getAdminLists($input);
+
+        return view('admin.news.index', compact(['lists', 'input']));
+    }
+
+
+    public function show(News $news)
     {
         var_dump(__LINE__);
     }

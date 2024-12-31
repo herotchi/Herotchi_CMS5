@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use App\Consts\NewsConsts;
 
 class News extends Model
@@ -33,5 +34,37 @@ class News extends Model
         $this->fill($data);
 
         $this->save();
+    }
+
+
+    public function getAdminLists(array $data)
+    {
+        $query = $this::query();
+
+        $query->when(Arr::exists($data, 'title') && $data['title'], function ($query) use ($data) {
+            return $query->where('title', 'like', "%{$data['title']}%");
+        });
+
+        $query->when(Arr::exists($data, 'link_flg') && $data['link_flg'], function ($query) use ($data) {
+            return $query->whereIn('link_flg', $data['link_flg']);
+        });
+
+        $query->when(Arr::exists($data, 'release_date_from') && $data['release_date_from'], function ($query) use ($data) {
+            return $query->where('release_date', '>=',  $data['release_date_from']);
+        });
+
+        $query->when(Arr::exists($data, 'release_date_to') && $data['release_date_to'], function ($query) use ($data) {
+            return $query->where('release_date', '<=',  $data['release_date_to']);
+        });
+
+        $query->when(Arr::exists($data, 'release_flg') && $data['release_flg'], function ($query) use ($data) {
+            return $query->whereIn('release_flg', $data['release_flg']);
+        });
+
+        $query->orderBy('release_date', 'desc')->orderBy('id', 'desc');
+
+        $lists = $query->paginate(NewsConsts::ADMIN_PAGENATE_LIST_LIMIT);
+
+        return $lists;
     }
 }

@@ -163,6 +163,9 @@ return [
         'overview'              => '概要',
         'release_date'          => '公開日',
         'release_flg'           => '表示設定',
-
+        'release_date_from'     => '公開日～',
+        'release_date_to'       => '～公開日',
+        'link_flg.*'            => 'リンク設定',
+        'release_flg.*'         => '表示設定',
     ],
 ];
