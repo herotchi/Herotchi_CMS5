@@ -11,12 +11,12 @@
                     <a class="nav-link @if($page=='admin.top') active @endif" @if($page=='admin.top')aria-current="page"@endif href="{{ route('admin.top') }}">TOP</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle @if($page=='admin.news.add' || $page=='admin.news.list' || $page=='admin.news.detail' || $page=='admin.news.edit') active @endif" 
-                        @if($page=='admin.news.add' || $page=='admin.news.list' || $page=='admin.news.detail' || $page=='admin.news.edit')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">お知らせ
+                    <a class="nav-link dropdown-toggle @if($page=='admin.news.create' || $page=='admin.news.index' || $page=='admin.news.show' || $page=='admin.news.edit') active @endif" 
+                        @if($page=='admin.news.create' || $page=='admin.news.index' || $page=='admin.news.show' || $page=='admin.news.edit')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">お知らせ
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item @if($page=='admin.news.create') active @endif" href="{{ route('admin.news.create') }}">お知らせ登録</a></li>
-                        <li><a class="dropdown-item @if($page=='admin.news.list') active @endif" href="{{ route('admin.top') }}">お知らせ一覧</a></li>
+                        <li><a class="dropdown-item @if($page=='admin.news.index') active @endif" href="{{ route('admin.news.index') }}">お知らせ一覧</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
