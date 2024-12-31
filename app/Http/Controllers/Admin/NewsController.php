@@ -40,7 +40,13 @@ class NewsController extends Controller
     }
 
 
-    public function show(News $news)
+    public function show(News $news): View
+    {
+        return view('admin.news.show', compact('news'));
+    }
+
+
+    public function edit()
     {
         var_dump(__LINE__);
     }
