@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\News\CreateRequest;
 use App\Http\Requests\Admin\News\IndexRequest;
+use App\Http\Requests\Admin\News\EditRequest;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Models\News;
@@ -46,8 +47,17 @@ class NewsController extends Controller
     }
 
 
-    public function edit()
+    public function edit(News $news): View
     {
-        var_dump(__LINE__);
+        return view('admin.news.edit', compact('news'));
+    }
+
+
+    public function update(EditRequest $request, News $news): RedirectResponse
+    {
+        $model = new News();
+        $news = $model->updateNews($news, $request->validated());
+
+        return redirect()->route('admin.news.show', $news)->with('msg_success', 'お知らせを編集しました。');
     }
 }
