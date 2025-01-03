@@ -2,7 +2,7 @@
     <nav aria-label="パンくずリスト">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.top') }}">TOP</a></li>
-            <li class="breadcrumb-item active" aria-current="page">お知らせ登録</li>
+            <li class="breadcrumb-item active" aria-current="page">お知らせ一覧</li>
         </ol>
     </nav>
 
@@ -24,7 +24,7 @@
 
                     <!-- リンク設定 -->
                     <x-input-label for="link_flg" value="リンク設定" />
-                    <x-checkbox-input name="link_flg" :array="$NewsConsts::LINK_FLG_LIST" :input="$input['link_flg']" />
+                    <x-checkbox-input name="link_flg" :array="$NewsConsts::LINK_FLG_LIST" :old="old('link_flg', $input['link_flg'])" />
                     <x-input-error :message="$errors->first('link_flg')" />
                     <x-input-error :message="$errors->first('link_flg.*')" />
 
@@ -50,7 +50,7 @@
 
                     <!-- 表示設定 -->
                     <x-input-label for="release_flg" value="表示設定" />
-                    <x-checkbox-input name="release_flg" :array="$NewsConsts::RELEASE_FLG_LIST" :input="$input['release_flg']" />
+                    <x-checkbox-input name="release_flg" :array="$NewsConsts::RELEASE_FLG_LIST" :old="old('link_flg', $input['release_flg'])" />
                     <x-input-error :message="$errors->first('release_flg')" />
                     <x-input-error :message="$errors->first('release_flg.*')" />
     

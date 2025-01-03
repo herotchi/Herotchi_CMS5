@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-12 text-center my-2">
                     <a class="btn btn-primary w-50" href="{{ route('admin.news.edit', $news) }}" role="button">編集</a>
-                    <a class="btn btn-secondary" href="{{ route('admin.news.index') }}" role="button">戻る</a>
+                    <x-secondary-button :href="route('admin.news.index')">戻る</x-secondary-button>
                     <!-- Button trigger modal -->
                     {{--<button type="button" class="btn btn-outline-danger float-end" data-bs-toggle="modal" data-bs-target="#deleteModal">削除</button>--}}
                 </div>

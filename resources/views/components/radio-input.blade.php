@@ -1,9 +1,9 @@
-@props(['name', 'array'])
+@props(['name', 'array', 'old'])
 
 <div class="btn-group mt-0 shadow-sm">
     @foreach($array as $key => $value)
         <input type="radio" class="btn-check" name="{{ $name }}" id="{{ $name }}_{{ $key }}"
-            value="{{ $key }}" @checked(old($name)==$key) required>
+            value="{{ $key }}" @checked($old==$key) required>
         <label class="btn btn-outline-success form-control{{ $errors->has($name) ? ' is-invalid' : '' }}"
             for="{{ $name }}_{{ $key }}">
             {{ $value }}

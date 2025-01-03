@@ -32,7 +32,6 @@ class News extends Model
             $this->overview = $data['overview'];
         }
         $this->fill($data);
-
         $this->save();
     }
 
@@ -66,5 +65,21 @@ class News extends Model
         $lists = $query->paginate(NewsConsts::ADMIN_PAGENATE_LIST_LIMIT);
 
         return $lists;
+    }
+
+
+    public function updateNews($news, array $data)
+    {
+        if ($data['link_flg'] == NewsConsts::LINK_FLG_ON) {
+            $news->url = $data['url'];
+            $news->overview = null;
+        } elseif ($data['link_flg'] == NewsConsts::LINK_FLG_OFF) {
+            $news->overview = $data['overview'];
+            $news->url = null;
+        }
+        $news->fill($data);
+        $news->update();
+
+        return $news;
     }
 }
