@@ -21,14 +21,14 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle
-                        @if($page=='admin.first_category.add' || $page=='admin.first_category.list' || $page=='admin.first_category.detail' || $page=='admin.first_category.edit'|| $page=='admin.first_category.csv_add' 
-                        || $page=='admin.second_category.add' || $page=='admin.second_category.list' || $page=='admin.second_category.detail' || $page=='admin.second_category.edit' || $page=='admin.second_category.csv_add') active @endif" 
-                        @if($page=='admin.first_category.add' || $page=='admin.first_category.list' || $page=='admin.first_category.detail' || $page=='admin.first_category.edit' 
-                        || $page=='admin.second_category.add' || $page=='admin.second_category.list' || $page=='admin.second_category.detail' || $page=='admin.second_category.edit')aria-current="page"@endif
+                        @if($page=='admin.first_category.create' || $page=='admin.first_category.list' || $page=='admin.first_category.detail' || $page=='admin.first_category.edit'|| $page=='admin.first_category.csv_add' 
+                        || $page=='admin.second_category.create' || $page=='admin.second_category.list' || $page=='admin.second_category.detail' || $page=='admin.second_category.edit' || $page=='admin.second_category.csv_add') active @endif" 
+                        @if($page=='admin.first_category.create' || $page=='admin.first_category.list' || $page=='admin.first_category.detail' || $page=='admin.first_category.edit' 
+                        || $page=='admin.second_category.create' || $page=='admin.second_category.list' || $page=='admin.second_category.detail' || $page=='admin.second_category.edit')aria-current="page"@endif
                         href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">カテゴリ
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item @if($page=='admin.first_category.add') active @endif" href="{{ route('admin.top') }}">大カテゴリ登録</a></li>
+                        <li><a class="dropdown-item @if($page=='admin.first_category.create') active @endif" href="{{ route('admin.first_category.create') }}">大カテゴリ登録</a></li>
                         <li><a class="dropdown-item @if($page=='admin.first_category.list') active @endif" href="{{ route('admin.top') }}">大カテゴリ一覧</a></li>
                         <li><a class="dropdown-item @if($page=='admin.first_category.csv_add') active @endif" href="{{ route('admin.top') }}">大カテゴリCSV登録</a></li>
                         <li><a class="dropdown-item @if($page=='admin.second_category.add') active @endif" href="{{ route('admin.top') }}">中カテゴリ登録</a></li>

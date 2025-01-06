@@ -35,7 +35,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::name('admin.')->middleware('auth:admin')->group(function () {
-        Route::get('top', [AdminTopController::class, 'index'])->name('top')->middleware('auth:admin');
+        Route::get('top', [AdminTopController::class, 'index'])->name('top');
 
         Route::prefix('news')->name('news.')->controller(AdminNewsController::class)->group(function () {
             Route::get('', 'index')->name('index');
@@ -46,12 +46,14 @@ Route::prefix('admin')->group(function () {
             Route::put('{news}/update', 'update')->name('update')->whereNumber('news');
             Route::delete('{news}/delete', 'delete')->name('delete')->whereNumber('news');
         });
+
+        Route::prefix('first_category')->name('first_category.')->controller(FirstCategoryController::class)->group(function () {
+            Route::get('', 'index')->name('index');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+        });
     });
-
-    
-
-    
-
+/*
     Route::prefix('first_category')->name('first_category.')->controller(FirstCategoryController::class)->group(function () {
         Route::get('', 'index')->name('index')->middleware('auth:admin');
         Route::get('{first_category}', 'show')->whereNumber('first_category')->name('show')->middleware('auth:admin');
@@ -60,7 +62,7 @@ Route::prefix('admin')->group(function () {
         Route::get('{first_category}/edit', 'edit')->whereNumber('first_category')->name('edit')->middleware('auth:admin');
         Route::put('{first_category}/update', 'update')->whereNumber('first_category')->name('update')->middleware('auth:admin');
         Route::delete('{first_category}/delete', 'delete')->whereNumber('first_category')->name('delete')->middleware('auth:admin');
-    });
+    });*/
 
     Route::prefix('second_category')->name('second_category.')->controller(SecondCategoryController::class)->group(function () {
         Route::get('', 'index')->name('index')->middleware('auth:admin');
