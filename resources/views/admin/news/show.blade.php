@@ -46,9 +46,10 @@
                     <a class="btn btn-primary w-50" href="{{ route('admin.news.edit', $news) }}" role="button">編集</a>
                     <x-secondary-button :href="route('admin.news.index')">戻る</x-secondary-button>
                     <!-- Button trigger modal -->
-                    {{--<button type="button" class="btn btn-outline-danger float-end" data-bs-toggle="modal" data-bs-target="#deleteModal">削除</button>--}}
+                    <button type="button" class="btn btn-outline-danger float-end" data-bs-toggle="modal" data-bs-target="#destroyModal">削除</button>
                 </div>
             </div>
         </div>
     </div>
 </x-admin-layout>
+<x-destroy-modal title="お知らせ" :route="route('admin.news.destroy', $news)" />

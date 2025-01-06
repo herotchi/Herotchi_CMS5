@@ -60,4 +60,12 @@ class NewsController extends Controller
 
         return redirect()->route('admin.news.show', $news)->with('msg_success', 'お知らせを編集しました。');
     }
+
+
+    public function destroy(News $news): RedirectResponse
+    {
+        $news->delete();
+
+        return redirect()->route('admin.news.index')->with('msg_success', 'お知らせを削除しました。');
+    }
 }
