@@ -43,8 +43,8 @@ Route::prefix('admin')->group(function () {
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
             Route::get('{news}/edit', 'edit')->name('edit')->whereNumber('news');
-            Route::put('{news}/update', 'update')->name('update')->whereNumber('news');
-            Route::delete('{news}/delete', 'delete')->name('delete')->whereNumber('news');
+            Route::put('{news}', 'update')->name('update')->whereNumber('news');
+            Route::delete('{news}', 'destroy')->name('destroy')->whereNumber('news');
         });
 
         Route::prefix('first_category')->name('first_category.')->controller(FirstCategoryController::class)->group(function () {
