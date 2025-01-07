@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\FirstCategory\CreateRequest;
+use App\Http\Requests\Admin\FirstCategory\IndexRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -29,8 +30,18 @@ class FirstCategoryController extends Controller
     }
 
 
-    public function index(): View
+    public function index(IndexRequest $request): View
     {
-        return view('admin.first_category.index');
+        $input = $request->validated();
+        $model = new FirstCategory();
+        $lists = $model->getAdminLists($input);
+
+        return view('admin.first_category.index', compact(['lists', 'input']));
+    }
+
+
+    public function show(FirstCategory $firstCategory): View
+    {
+        return view('admin.first_category.show', compact('firstCategory'));
     }
 }
