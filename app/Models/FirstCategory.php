@@ -39,4 +39,13 @@ class FirstCategory extends Model
 
         return $lists;
     }
+
+
+    public function updateFirstCategory($firstCategory, array $data)
+    {
+        $firstCategory->fill($data);
+        $firstCategory->update();
+
+        return $firstCategory;
+    }
 }

@@ -53,6 +53,7 @@ Route::prefix('admin')->group(function () {
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
             Route::get('{first_category}/edit', 'edit')->name('edit')->whereNumber('first_category');
+            Route::put('{first_category}', 'update')->name('update')->whereNumber('first_category');
         });
     });
 /*

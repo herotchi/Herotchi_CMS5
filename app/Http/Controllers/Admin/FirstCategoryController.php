@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\FirstCategory\CreateRequest;
 use App\Http\Requests\Admin\FirstCategory\IndexRequest;
+use App\Http\Requests\Admin\FirstCategory\EditRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -49,5 +50,14 @@ class FirstCategoryController extends Controller
     public function edit(FirstCategory $firstCategory): View
     {
         return view('admin.first_category.edit', compact('firstCategory'));
+    }
+
+
+    public function update(EditRequest $request, FirstCategory $firstCategory): RedirectResponse
+    {
+        $model = new FirstCategory();
+        $news = $model->updateFirstCategory($firstCategory, $request->validated());
+
+        return redirect()->route('admin.first_category.show', $firstCategory)->with('msg_success', '大カテゴリを編集しました。');
     }
 }
