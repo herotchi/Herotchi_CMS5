@@ -60,4 +60,13 @@ class FirstCategoryController extends Controller
 
         return redirect()->route('admin.first_category.show', $firstCategory)->with('msg_success', '大カテゴリを編集しました。');
     }
+
+
+    public function destroy(FirstCategory $firstCategory): RedirectResponse
+    {
+        // 中カテゴリと紐づいている大カテゴリがある場合は削除できないように仕様追加
+        $firstCategory->delete();
+
+        return redirect()->route('admin.first_category.index')->with('msg_success', '大カテゴリを削除しました。');
+    }
 }
