@@ -49,9 +49,10 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('first_category')->name('first_category.')->controller(FirstCategoryController::class)->group(function () {
             Route::get('', 'index')->name('index');
-            Route::get('{news}', 'show')->whereNumber('news')->name('show');
+            Route::get('{first_category}', 'show')->whereNumber('first_category')->name('show');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
+            Route::get('{first_category}/edit', 'edit')->name('edit')->whereNumber('first_category');
         });
     });
 /*

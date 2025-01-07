@@ -44,4 +44,10 @@ class FirstCategoryController extends Controller
     {
         return view('admin.first_category.show', compact('firstCategory'));
     }
+
+
+    public function edit(FirstCategory $firstCategory): View
+    {
+        return view('admin.first_category.edit', compact('firstCategory'));
+    }
 }
