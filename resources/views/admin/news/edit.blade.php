@@ -17,7 +17,7 @@
                 <div class="row g-3">
                     <!-- タイトル -->
                     <div class="col-md-12">
-                        <x-input-label for="name" value="タイトル" :required="true"/>
+                        <x-input-label for="title" value="タイトル" :required="true"/>
                         <x-text-input id="title" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" 
                             type="text" 
                             name="title" 
@@ -27,13 +27,13 @@
                     </div>
     
                     <!-- リンク設定 -->
-                    <x-input-label for="name" value="リンク設定" :required="true"/>
+                    <x-input-label for="link_flg" value="リンク設定" :required="true"/>
                     <x-radio-input name="link_flg" :array="$NewsConsts::LINK_FLG_LIST" :old="old('link_flg', $news->link_flg)" />
                     <x-input-error :message="$errors->first('link_flg')" />
 
                     <!-- URL -->
                     <div class="col-md-12">
-                        <x-input-label for="name" value="URL" />
+                        <x-input-label for="url" value="URL" />
                         <x-text-input id="url" class="form-control{{ $errors->has('url') ? ' is-invalid' : '' }}" 
                             type="text" 
                             name="url" 
