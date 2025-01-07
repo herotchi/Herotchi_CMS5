@@ -54,6 +54,7 @@ Route::prefix('admin')->group(function () {
             Route::post('store', 'store')->name('store');
             Route::get('{first_category}/edit', 'edit')->name('edit')->whereNumber('first_category');
             Route::put('{first_category}', 'update')->name('update')->whereNumber('first_category');
+            Route::delete('{first_category}', 'destroy')->name('destroy')->whereNumber('first_category');
         });
     });
 /*
