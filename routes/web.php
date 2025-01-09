@@ -56,6 +56,16 @@ Route::prefix('admin')->group(function () {
             Route::put('{first_category}', 'update')->name('update')->whereNumber('first_category');
             Route::delete('{first_category}', 'destroy')->name('destroy')->whereNumber('first_category');
         });
+
+        Route::prefix('second_category')->name('second_category.')->controller(SecondCategoryController::class)->group(function () {
+            Route::get('', 'index')->name('index');
+            //Route::get('{second_category}', 'show')->whereNumber('second_category')->name('show');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            //Route::get('{second_category}/edit', 'edit')->name('edit')->whereNumber('second_category');
+            //Route::put('{second_category}', 'update')->name('update')->whereNumber('second_category');
+            //Route::delete('{second_category}', 'destroy')->name('destroy')->whereNumber('second_category');
+        });
     });
 /*
     Route::prefix('first_category')->name('first_category.')->controller(FirstCategoryController::class)->group(function () {
@@ -66,7 +76,7 @@ Route::prefix('admin')->group(function () {
         Route::get('{first_category}/edit', 'edit')->whereNumber('first_category')->name('edit')->middleware('auth:admin');
         Route::put('{first_category}/update', 'update')->whereNumber('first_category')->name('update')->middleware('auth:admin');
         Route::delete('{first_category}/delete', 'delete')->whereNumber('first_category')->name('delete')->middleware('auth:admin');
-    });*/
+    });
 
     Route::prefix('second_category')->name('second_category.')->controller(SecondCategoryController::class)->group(function () {
         Route::get('', 'index')->name('index')->middleware('auth:admin');
@@ -76,7 +86,7 @@ Route::prefix('admin')->group(function () {
         Route::get('{second_category}/edit', 'edit')->whereNumber('second_category')->name('edit')->middleware('auth:admin');
         Route::put('{second_category}/update', 'update')->whereNumber('second_category')->name('update')->middleware('auth:admin');
         Route::delete('{second_category}/delete', 'delete')->whereNumber('second_category')->name('delete')->middleware('auth:admin');
-    });
+    });*/
 
     Route::prefix('tab')->name('tab.')->controller(TabController::class)->group(function () {
         Route::get('', 'index')->name('index')->middleware('auth:admin');

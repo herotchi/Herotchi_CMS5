@@ -31,7 +31,7 @@
                         <li><a class="dropdown-item @if($page=='admin.first_category.create') active @endif" href="{{ route('admin.first_category.create') }}">大カテゴリ登録</a></li>
                         <li><a class="dropdown-item @if($page=='admin.first_category.index') active @endif" href="{{ route('admin.first_category.index') }}">大カテゴリ一覧</a></li>
                         <li><a class="dropdown-item @if($page=='admin.first_category.csv_add') active @endif" href="{{ route('admin.top') }}">大カテゴリCSV登録</a></li>
-                        <li><a class="dropdown-item @if($page=='admin.second_category.add') active @endif" href="{{ route('admin.top') }}">中カテゴリ登録</a></li>
+                        <li><a class="dropdown-item @if($page=='admin.second_category.create') active @endif" href="{{ route('admin.second_category.create') }}">中カテゴリ登録</a></li>
                         <li><a class="dropdown-item @if($page=='admin.second_category.list') active @endif" href="{{ route('admin.top') }}">中カテゴリ一覧</a></li>
                         <li><a class="dropdown-item @if($page=='admin.second_category.csv_add') active @endif" href="{{ route('admin.top') }}">中カテゴリCSV登録</a></li>
                         
