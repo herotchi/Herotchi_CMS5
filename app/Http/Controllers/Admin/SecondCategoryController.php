@@ -4,13 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\Admin\SecondCategory\CreateRequest;
+use App\Http\Requests\Admin\SecondCategory\IndexRequest;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 use App\Models\FirstCategory;
 use App\Models\SecondCategory;
 use App\Consts\SecondCategoryConsts;
-use App\Http\Requests\Admin\SecondCategory\CreateRequest;
+
+
 
 class SecondCategoryController extends Controller
 {
@@ -33,8 +36,16 @@ class SecondCategoryController extends Controller
     }
 
 
-    public function index()
+    public function index(IndexRequest $request)
     {
-        var_dump(__LINE__);
+        $input = $request->validated();
+
+        $firstCategoryModel = new FirstCategory();
+        $firstCategories = $firstCategoryModel->getLists();
+
+        $secondCategoryModel = new SecondCategory();
+        $lists = $secondCategoryModel->getAdminLists($input);
+
+        return view('admin.second_category.index', compact(['firstCategories', 'lists', 'input']));
     }
 }

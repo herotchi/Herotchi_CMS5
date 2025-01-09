@@ -38,8 +38,7 @@ class CreateRequest extends FormRequest
     public function attributes()
     {
         return [
-            'first_category_id' => '大カテゴリ名',
-            'name'              => '中カテゴリ名',
+            'name' => '中カテゴリ名',
         ];
     }
 

@@ -13,23 +13,11 @@
             <div class="card-body">
                 <div class="row g-3">
 
-                    <!-- 大カテゴリ -->
+                    <!-- 大カテゴリ名 -->
                     <div class="col-md-12">
                         <x-input-label for="first_category_id" value="大カテゴリ名" :required="true"/>
                         <x-select-input name="first_category_id" :array="$firstCategories" :old="old('first_category_id')" />
                         <x-input-error :message="$errors->first('first_category_id')" />
-                        {{--<label for="first_category_id" class="form-label">大カテゴリ名
-                            <span class="text-danger font-weight-bold">※</span>
-                        </label>
-                        <select id="first_category_id" class="form-select{{ $errors->has('first_category_id') ? ' is-invalid' : '' }}"
-                            name="first_category_id" required>
-                            <option value="">---</option>
-                            @foreach($firstCategories as $firstCategory)
-                            <option value="{{ $firstCategory->id }}" @if(old('first_category_id')==$firstCategory->id) selected="selected" @endif>
-                                {{ $firstCategory->name }}</option>
-                            @endforeach
-                        </select>
-                        <div class="invalid-feedback">{{ $errors->first('first_category_id') }}</div>--}}
                     </div>
 
                     <!-- 中カテゴリ名 -->

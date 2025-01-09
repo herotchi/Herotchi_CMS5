@@ -4,7 +4,7 @@
     name="{{ $name }}">
     <option value="">---</option>
     @foreach($array as $value)
-        <option value="{{ $value->id }}" @selected(old($name)==$value->id)>
+        <option value="{{ $value->id }}" @selected($old==$value->id)>
             {{ $value->name }}
         </option>
     @endforeach

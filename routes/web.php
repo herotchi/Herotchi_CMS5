@@ -59,7 +59,7 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('second_category')->name('second_category.')->controller(SecondCategoryController::class)->group(function () {
             Route::get('', 'index')->name('index');
-            //Route::get('{second_category}', 'show')->whereNumber('second_category')->name('show');
+            Route::get('{second_category}', 'show')->whereNumber('second_category')->name('show');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
             //Route::get('{second_category}/edit', 'edit')->name('edit')->whereNumber('second_category');
