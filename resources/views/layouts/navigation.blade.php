@@ -22,9 +22,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle
                         @if($page=='admin.first_category.create' || $page=='admin.first_category.index' || $page=='admin.first_category.show' || $page=='admin.first_category.edit'|| $page=='admin.first_category.csv_add' 
-                        || $page=='admin.second_category.create' || $page=='admin.second_category.index' || $page=='admin.second_category.detail' || $page=='admin.second_category.edit' || $page=='admin.second_category.csv_add') active @endif" 
+                        || $page=='admin.second_category.create' || $page=='admin.second_category.index' || $page=='admin.second_category.show' || $page=='admin.second_category.edit' || $page=='admin.second_category.csv_add') active @endif" 
                         @if($page=='admin.first_category.create' || $page=='admin.first_category.index' || $page=='admin.first_category.show' || $page=='admin.first_category.edit' 
-                        || $page=='admin.second_category.create' || $page=='admin.second_category.index' || $page=='admin.second_category.detail' || $page=='admin.second_category.edit')aria-current="page"@endif
+                        || $page=='admin.second_category.create' || $page=='admin.second_category.index' || $page=='admin.second_category.show' || $page=='admin.second_category.edit')aria-current="page"@endif
                         href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">カテゴリ
                     </a>
                     <ul class="dropdown-menu">

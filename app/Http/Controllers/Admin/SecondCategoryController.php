@@ -48,4 +48,11 @@ class SecondCategoryController extends Controller
 
         return view('admin.second_category.index', compact(['firstCategories', 'lists', 'input']));
     }
+
+
+
+    public function show(SecondCategory $secondCategory): View
+    {
+        return view('admin.second_category.show', compact('secondCategory'));
+    }
 }
