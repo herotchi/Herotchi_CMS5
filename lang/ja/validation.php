@@ -167,5 +167,6 @@ return [
         'release_date_to'       => '～公開日',
         'link_flg.*'            => 'リンク設定',
         'release_flg.*'         => '表示設定',
+        'first_category_id'     => '大カテゴリ名',
     ],
 ];
