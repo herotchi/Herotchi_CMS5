@@ -8,7 +8,7 @@
 
     <div class="card">
         <form action="{{ route('admin.second_category.index') }}" method="GET" novalidate>
-            <div class="card-header">お知らせ一覧</div>
+            <div class="card-header">中カテゴリ一覧</div>
             <div class="card-body">
                 <div class="row g-3">
     

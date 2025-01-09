@@ -62,7 +62,7 @@ Route::prefix('admin')->group(function () {
             Route::get('{second_category}', 'show')->whereNumber('second_category')->name('show');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
-            //Route::get('{second_category}/edit', 'edit')->name('edit')->whereNumber('second_category');
+            Route::get('{second_category}/edit', 'edit')->name('edit')->whereNumber('second_category');
             //Route::put('{second_category}', 'update')->name('update')->whereNumber('second_category');
             //Route::delete('{second_category}', 'destroy')->name('destroy')->whereNumber('second_category');
         });
