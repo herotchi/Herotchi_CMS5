@@ -74,4 +74,13 @@ class SecondCategoryController extends Controller
 
         return redirect()->route('admin.second_category.show', $secondCategory)->with('msg_success', '中カテゴリを編集しました。');
     }
+
+
+    public function destroy(SecondCategory $secondCategory): RedirectResponse
+    {
+        // 製品と紐づいている中カテゴリがある場合は削除できないように仕様追加
+        $secondCategory->delete();
+
+        return redirect()->route('admin.second_category.index', $secondCategory)->with('msg_success', '中カテゴリを削除しました。');
+    }
 }
