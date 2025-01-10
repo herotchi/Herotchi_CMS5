@@ -15,7 +15,7 @@
             <div class="card-header">大カテゴリ編集</div>
             <div class="card-body">
                 <div class="row g-3">
-                    <!-- タイトル -->
+                    <!-- 大カテゴリ名 -->
                     <div class="col-md-12">
                         <x-input-label for="name" value="大カテゴリ名" :required="true"/>
                         <x-text-input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" 

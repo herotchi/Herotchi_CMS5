@@ -48,7 +48,7 @@ class FirstCategory extends Model
     }
 
 
-    public function updateFirstCategory($firstCategory, array $data)
+    public function updateFirstCategory(array $data, $firstCategory)
     {
         $firstCategory->fill($data);
         $firstCategory->update();

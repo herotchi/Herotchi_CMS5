@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\SecondCategory\CreateRequest;
 use App\Http\Requests\Admin\SecondCategory\IndexRequest;
+use App\Http\Requests\Admin\SecondCategory\EditRequest;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -46,7 +47,7 @@ class SecondCategoryController extends Controller
         $secondCategoryModel = new SecondCategory();
         $lists = $secondCategoryModel->getAdminLists($input);
 
-        return view('admin.second_category.index', compact(['firstCategories', 'lists', 'input']));
+        return view('admin.second_category.index', compact('firstCategories', 'lists', 'input'));
     }
 
 
@@ -54,5 +55,23 @@ class SecondCategoryController extends Controller
     public function show(SecondCategory $secondCategory): View
     {
         return view('admin.second_category.show', compact('secondCategory'));
+    }
+
+
+    public function edit(SecondCategory $secondCategory): View
+    {
+        $model = new FirstCategory();
+        $firstCategories = $model->getLists();
+
+        return view('admin.second_category.edit', compact('secondCategory', 'firstCategories'));
+    }
+
+
+    public function update(EditRequest $request, SecondCategory $secondCategory): RedirectResponse
+    {
+        $model = new SecondCategory();
+        $secondCategory = $model->updateSecondCategory($request->validated(), $secondCategory);
+
+        return redirect()->route('admin.second_category.show', $secondCategory)->with('msg_success', '中カテゴリを編集しました。');
     }
 }
