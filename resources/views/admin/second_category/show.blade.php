@@ -27,10 +27,10 @@
                     <a class="btn btn-primary w-50" href="{{ route('admin.second_category.edit', $secondCategory) }}" role="button">編集</a>
                     <x-secondary-button :href="route('admin.second_category.index')">戻る</x-secondary-button>
                     <!-- Button trigger modal -->
-                    {{--<button type="button" class="btn btn-outline-danger float-end" data-bs-toggle="modal" data-bs-target="#destroyModal">削除</button>--}}
+                    <button type="button" class="btn btn-outline-danger float-end" data-bs-toggle="modal" data-bs-target="#destroyModal">削除</button>
                 </div>
             </div>
         </div>
     </div>
 </x-admin-layout>
-{{--<x-destroy-modal title="大カテゴリ" :route="route('admin.second_category.destroy', $firstCategory)" />--}}
+<x-destroy-modal title="中カテゴリ" :route="route('admin.second_category.destroy', $secondCategory)" />
