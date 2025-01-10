@@ -51,4 +51,13 @@ class SecondCategory extends Model
 
         return $lists;
     }
+
+
+    public function updateSecondCategory(array $data, $secondCategory)
+    {
+        $secondCategory->fill($data);
+        $secondCategory->update();
+
+        return $secondCategory;
+    }
 }
