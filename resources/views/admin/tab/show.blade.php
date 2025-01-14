@@ -23,10 +23,10 @@
                     <a class="btn btn-primary w-50" href="{{ route('admin.tab.edit', $tab) }}" role="button">編集</a>
                     <x-secondary-button :href="route('admin.tab.index')">戻る</x-secondary-button>
                     <!-- Button trigger modal -->
-                    {{--<button type="button" class="btn btn-outline-danger float-end" data-bs-toggle="modal" data-bs-target="#destroyModal">削除</button>--}}
+                    <button type="button" class="btn btn-outline-danger float-end" data-bs-toggle="modal" data-bs-target="#destroyModal">削除</button>
                 </div>
             </div>
         </div>
     </div>
 </x-admin-layout>
-{{--<x-destroy-modal title="タブ" :route="route('admin.tab.destroy', $tab)" />--}}
+<x-destroy-modal title="タブ" :route="route('admin.tab.destroy', $tab)" />
