@@ -38,6 +38,15 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle @if($page=='admin.tab.create' || $page=='admin.tab.index' || $page=='admin.tab.show' || $page=='admin.tab.edit') active @endif" 
+                        @if($page=='admin.tab.create' || $page=='admin.tab.index' || $page=='admin.tab.show' || $page=='admin.tab.edit')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">タブ
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item @if($page=='admin.tab.create') active @endif" href="{{ route('admin.tab.create') }}">タブ登録</a></li>
+                        <li><a class="dropdown-item @if($page=='admin.tab.index') active @endif" href="{{ route('admin.tab.index') }}">タブ一覧</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle @if($page=='admin.product.add' || $page=='admin.product.list' || $page=='admin.product.detail' || $page=='admin.product.edit') active @endif" 
                         @if($page=='admin.product.add' || $page=='admin.product.list' || $page=='admin.product.detail' || $page=='admin.product.edit')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">製品情報
                     </a>

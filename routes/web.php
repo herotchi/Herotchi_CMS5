@@ -66,6 +66,17 @@ Route::prefix('admin')->group(function () {
             Route::put('{second_category}', 'update')->name('update')->whereNumber('second_category');
             Route::delete('{second_category}', 'destroy')->name('destroy')->whereNumber('second_category');
         });
+
+        Route::prefix('tab')->name('tab.')->controller(TabController::class)->group(function () {
+            Route::get('', 'index')->name('index');
+            Route::get('{tab}', 'show')->whereNumber('tab')->name('show');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            Route::get('{tab}/edit', 'edit')->name('edit')->whereNumber('tab');
+            //Route::put('{tab}', 'update')->name('update')->whereNumber('tab');
+            //Route::delete('{tab}', 'destroy')->name('destroy')->whereNumber('tab');
+        });
+
     });
 /*
     Route::prefix('first_category')->name('first_category.')->controller(FirstCategoryController::class)->group(function () {
@@ -86,7 +97,7 @@ Route::prefix('admin')->group(function () {
         Route::get('{second_category}/edit', 'edit')->whereNumber('second_category')->name('edit')->middleware('auth:admin');
         Route::put('{second_category}/update', 'update')->whereNumber('second_category')->name('update')->middleware('auth:admin');
         Route::delete('{second_category}/delete', 'delete')->whereNumber('second_category')->name('delete')->middleware('auth:admin');
-    });*/
+    });
 
     Route::prefix('tab')->name('tab.')->controller(TabController::class)->group(function () {
         Route::get('', 'index')->name('index')->middleware('auth:admin');
@@ -96,7 +107,7 @@ Route::prefix('admin')->group(function () {
         Route::get('{tab}/edit', 'edit')->whereNumber('tab')->name('edit')->middleware('auth:admin');
         Route::put('{tab}/update', 'update')->whereNumber('tab')->name('update')->middleware('auth:admin');
         Route::delete('{tab}/delete', 'delete')->whereNumber('tab')->name('delete')->middleware('auth:admin');
-    });
+    });*/
 
     Route::prefix('product')->name('product.')->controller(AdminProductController::class)->group(function () {
         Route::get('', 'index')->name('index')->middleware('auth:admin');
