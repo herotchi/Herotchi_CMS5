@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Tab\CreateRequest;
-//use App\Http\Requests\Admin\Tab\IndexRequest;
+use App\Http\Requests\Admin\Tab\IndexRequest;
 //use App\Http\Requests\Admin\Tab\EditRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -31,8 +31,12 @@ class TabController extends Controller
     }
 
 
-    public function index()
+    public function index(IndexRequest $request): View
     {
-        var_dump(__LINE__);
+        $input = $request->validated();
+        $model = new Tab();
+        $lists = $model->getAdminLists($input);
+
+        return view('admin.tab.index', compact('lists', 'input'));
     }
 }
