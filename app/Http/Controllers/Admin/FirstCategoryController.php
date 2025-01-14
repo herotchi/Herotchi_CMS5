@@ -56,7 +56,7 @@ class FirstCategoryController extends Controller
     public function update(EditRequest $request, FirstCategory $firstCategory): RedirectResponse
     {
         $model = new FirstCategory();
-        $news = $model->updateFirstCategory($request->validated(), $firstCategory);
+        $firstCategory = $model->updateFirstCategory($request->validated(), $firstCategory);
 
         return redirect()->route('admin.first_category.show', $firstCategory)->with('msg_success', '大カテゴリを編集しました。');
     }

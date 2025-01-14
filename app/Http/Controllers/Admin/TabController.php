@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Tab\CreateRequest;
 use App\Http\Requests\Admin\Tab\IndexRequest;
-//use App\Http\Requests\Admin\Tab\EditRequest;
+use App\Http\Requests\Admin\Tab\EditRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -44,5 +44,20 @@ class TabController extends Controller
     public function show(Tab $tab): View
     {
         return view('admin.tab.show', compact('tab'));
+    }
+
+
+    public function edit(Tab $tab): View
+    {
+        return view('admin.tab.edit', compact('tab'));
+    }
+
+
+    public function update(EditRequest $request, Tab $tab): RedirectResponse
+    {
+        $model = new Tab();
+        $tab = $model->updateTab($request->validated(), $tab);
+
+        return redirect()->route('admin.tab.show', $tab)->with('msg_success', 'タブを編集しました。');
     }
 }

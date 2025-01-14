@@ -40,4 +40,13 @@ class Tab extends Model
 
         return $lists;
     }
+
+
+    public function updateTab(array $data, $tab)
+    {
+        $tab->fill($data);
+        $tab->update();
+
+        return $tab;
+    }
 }
