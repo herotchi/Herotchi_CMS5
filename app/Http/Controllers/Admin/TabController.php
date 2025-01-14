@@ -39,4 +39,10 @@ class TabController extends Controller
 
         return view('admin.tab.index', compact('lists', 'input'));
     }
+
+
+    public function show(Tab $tab): View
+    {
+        return view('admin.tab.show', compact('tab'));
+    }
 }
