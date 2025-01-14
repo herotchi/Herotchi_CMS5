@@ -74,7 +74,7 @@ Route::prefix('admin')->group(function () {
             Route::post('store', 'store')->name('store');
             Route::get('{tab}/edit', 'edit')->name('edit')->whereNumber('tab');
             Route::put('{tab}', 'update')->name('update')->whereNumber('tab');
-            //Route::delete('{tab}', 'destroy')->name('destroy')->whereNumber('tab');
+            Route::delete('{tab}', 'destroy')->name('destroy')->whereNumber('tab');
         });
 
     });

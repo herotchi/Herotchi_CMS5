@@ -60,4 +60,13 @@ class TabController extends Controller
 
         return redirect()->route('admin.tab.show', $tab)->with('msg_success', 'タブを編集しました。');
     }
+
+
+    public function destroy(Tab $tab): RedirectResponse
+    {
+        // 製品と紐づいているタブがある場合は削除できないように仕様追加
+        $tab->delete();
+
+        return redirect()->route('admin.tab.index')->with('msg_success', 'タブを削除しました。');
+    }
 }
