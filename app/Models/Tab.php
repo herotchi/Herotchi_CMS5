@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Consts\TabConsts;
+use Illuminate\Support\Arr;
 
 class Tab extends Model
 {
@@ -22,5 +23,21 @@ class Tab extends Model
         $this->fill($data);
 
         $this->save();
+    }
+
+
+    public function getAdminLists(array $data)
+    {
+        $query = $this::query();
+
+        $query->when(Arr::exists($data, 'name') && $data['name'], function ($query) use ($data) {
+            return $query->where('name', 'like', "%{$data['name']}%");
+        });
+
+        $query->orderBy('id', 'desc');
+
+        $lists = $query->paginate(TabConsts::PAGENATE_LIST_LIMIT);
+
+        return $lists;
     }
 }
