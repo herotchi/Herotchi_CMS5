@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 
+use App\Http\Controllers\ProductController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -77,6 +79,16 @@ Route::prefix('admin')->group(function () {
             Route::delete('{tab}', 'destroy')->name('destroy')->whereNumber('tab');
         });
 
+        Route::prefix('product')->name('product.')->controller(AdminProductController::class)->group(function () {
+            Route::get('', 'index')->name('index');
+            //Route::get('{product}', 'show')->whereNumber('product')->name('show');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            //Route::get('{product}/edit', 'edit')->whereNumber('product')->name('edit');
+            //Route::put('{product}/update', 'update')->whereNumber('product')->name('update');
+            //Route::delete('{product}/delete', 'delete')->whereNumber('product')->name('delete');
+        });
+
     });
 /*
     Route::prefix('first_category')->name('first_category.')->controller(FirstCategoryController::class)->group(function () {
@@ -107,7 +119,7 @@ Route::prefix('admin')->group(function () {
         Route::get('{tab}/edit', 'edit')->whereNumber('tab')->name('edit')->middleware('auth:admin');
         Route::put('{tab}/update', 'update')->whereNumber('tab')->name('update')->middleware('auth:admin');
         Route::delete('{tab}/delete', 'delete')->whereNumber('tab')->name('delete')->middleware('auth:admin');
-    });*/
+    });
 
     Route::prefix('product')->name('product.')->controller(AdminProductController::class)->group(function () {
         Route::get('', 'index')->name('index')->middleware('auth:admin');
@@ -117,7 +129,7 @@ Route::prefix('admin')->group(function () {
         Route::get('{product}/edit', 'edit')->whereNumber('product')->name('edit')->middleware('auth:admin');
         Route::put('{product}/update', 'update')->whereNumber('product')->name('update')->middleware('auth:admin');
         Route::delete('{product}/delete', 'delete')->whereNumber('product')->name('delete')->middleware('auth:admin');
-    });
+    });*/
 
     Route::prefix('media')->name('media.')->controller(MediaController::class)->group(function () {
         Route::get('', 'index')->name('index')->middleware('auth:admin');
@@ -148,6 +160,16 @@ Route::prefix('admin')->group(function () {
         Route::put('{user}/update', 'update')->whereNumber('user')->name('update')->middleware('auth:admin');
         Route::delete('{user}/delete', 'delete')->whereNumber('user')->name('delete')->middleware('auth:admin');
     });
+});
+
+Route::prefix('product')->name('product.')->controller(ProductController::class)->group(function () {
+    //Route::get('', 'index')->name('index');
+    Route::get('{product}', 'show')->whereNumber('product')->name('show');
+    //Route::get('create', 'create')->name('create');
+    //Route::post('store', 'store')->name('store');
+    //Route::get('{product}/edit', 'edit')->whereNumber('product')->name('edit');
+    //Route::put('{product}/update', 'update')->whereNumber('product')->name('update');
+    //Route::delete('{product}/delete', 'delete')->whereNumber('product')->name('delete');
 });
 
 

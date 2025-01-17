@@ -59,7 +59,7 @@
     
                     <!-- 表示設定 -->
                     <x-input-label for="release_flg" value="表示設定" :required="true"/>
-                    <x-radio-input name="release_flg" :array="$NewsConsts::RELEASE_FLG_LIST" :old="old('link_flg')" />
+                    <x-radio-input name="release_flg" :array="$NewsConsts::RELEASE_FLG_LIST" :old="old('release_flg')" />
                     <x-input-error :message="$errors->first('release_flg')" />
     
                 </div>

@@ -56,7 +56,7 @@ class NewsController extends Controller
     public function update(EditRequest $request, News $news): RedirectResponse
     {
         $model = new News();
-        $news = $model->updateNews($news, $request->validated());
+        $news = $model->updateNews($request->validated(), $news);
 
         return redirect()->route('admin.news.show', $news)->with('msg_success', 'お知らせを編集しました。');
     }

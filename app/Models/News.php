@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use App\Consts\NewsConsts;
 
+use DateTime;
+
 class News extends Model
 {
     //
@@ -68,7 +70,7 @@ class News extends Model
     }
 
 
-    public function updateNews($news, array $data)
+    public function updateNews(array $data, $news)
     {
         if ($data['link_flg'] == NewsConsts::LINK_FLG_ON) {
             $news->url = $data['url'];
@@ -81,5 +83,19 @@ class News extends Model
         $news->update();
 
         return $news;
+    }
+
+
+    public function saveProductNews($product, $message)
+    {
+        $today = new DateTime();
+
+        $this->title = $product->name . $message;
+        $this->link_flg = NewsConsts::LINK_FLG_ON;
+        $this->url = route('product.show', $product);
+        $this->release_date = $today->format('Y-m-d');
+        $this->release_flg = NewsConsts::RELEASE_FLG_OFF;
+
+        $this->save();
     }
 }

@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\View;
 
 use Illuminate\Pagination\Paginator;
 use App\Consts\NewsConsts;
+use App\Consts\FirstCategoryConsts;
+use App\Consts\SecondCategoryConsts;
+use App\Consts\TabConsts;
+use App\Consts\ProductConsts;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,5 +31,9 @@ class AppServiceProvider extends ServiceProvider
         //
         Paginator::useBootstrapFive();
         View::share('NewsConsts', NewsConsts::class);
+        View::share('FirstCategoryConsts', FirstCategoryConsts::class);
+        View::share('SecondCategoryConsts', SecondCategoryConsts::class);
+        View::share('TabConsts', TabConsts::class);
+        View::share('ProductConsts', ProductConsts::class);
     }
 }
