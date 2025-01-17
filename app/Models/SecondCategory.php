@@ -60,4 +60,12 @@ class SecondCategory extends Model
 
         return $secondCategory;
     }
+
+
+    public function getLists()
+    {
+        $lists = $this::all();
+
+        return $lists;
+    }
 }

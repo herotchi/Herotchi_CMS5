@@ -49,4 +49,12 @@ class Tab extends Model
 
         return $tab;
     }
+
+
+    public function getLists()
+    {
+        $lists = $this::all();
+
+        return $lists;
+    }
 }

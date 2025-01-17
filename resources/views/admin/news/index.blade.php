@@ -25,8 +25,7 @@
                     <!-- リンク設定 -->
                     <x-input-label for="link_flg" value="リンク設定" />
                     <x-checkbox-input name="link_flg" :array="$NewsConsts::LINK_FLG_LIST" :old="old('link_flg', $input['link_flg'])" />
-                    <x-input-error :message="$errors->first('link_flg')" />
-                    <x-input-error :message="$errors->first('link_flg.*')" />
+                    <x-input-error :message="$errors->first('link_flg') ?: $errors->first('link_flg.*')" />
 
                     <!-- 公開日～ -->
                     <div class="col-md-6">
@@ -50,10 +49,9 @@
 
                     <!-- 表示設定 -->
                     <x-input-label for="release_flg" value="表示設定" />
-                    <x-checkbox-input name="release_flg" :array="$NewsConsts::RELEASE_FLG_LIST" :old="old('link_flg', $input['release_flg'])" />
-                    <x-input-error :message="$errors->first('release_flg')" />
-                    <x-input-error :message="$errors->first('release_flg.*')" />
-    
+                    <x-checkbox-input name="release_flg" :array="$NewsConsts::RELEASE_FLG_LIST" :old="old('release_flg', $input['release_flg'])" />
+                    <x-input-error :message="$errors->first('release_flg') ?: $errors->first('release_flg.*')" />
+
                 </div>
             </div>
             <div class="card-footer">
