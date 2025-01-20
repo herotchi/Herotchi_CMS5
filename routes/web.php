@@ -81,7 +81,7 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('product')->name('product.')->controller(AdminProductController::class)->group(function () {
             Route::get('', 'index')->name('index');
-            //Route::get('{product}', 'show')->whereNumber('product')->name('show');
+            Route::get('{product}', 'show')->whereNumber('product')->name('show');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
             //Route::get('{product}/edit', 'edit')->whereNumber('product')->name('edit');

@@ -37,7 +37,7 @@ class NewsController extends Controller
         $model = new News();
         $lists = $model->getAdminLists($input);
 
-        return view('admin.news.index', compact(['lists', 'input']));
+        return view('admin.news.index', compact('lists', 'input'));
     }
 
 

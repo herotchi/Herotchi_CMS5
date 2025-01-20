@@ -14,7 +14,7 @@
     
                     <!-- 大カテゴリ名 -->
                     <div class="col-md-12">
-                        <x-input-label for="first_category_id" value="大カテゴリ名" :required="true"/>
+                        <x-input-label for="first_category_id" value="大カテゴリ名" />
                         <x-select-input name="first_category_id" :array="$firstCategories" :old="old('first_category_id', $input['first_category_id'])" />
                         <x-input-error :message="$errors->first('first_category_id')" />
                     </div>
