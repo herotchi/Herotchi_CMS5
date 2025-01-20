@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\Product\CreateRequest;
-//use App\Http\Requests\Admin\Product\IndexRequest;
+use App\Http\Requests\Admin\Product\IndexRequest;
 //use App\Http\Requests\Admin\Product\EditRequest;
 //use App\Http\Requests\Admin\Product\BatchDeleteRequest;
 
@@ -58,8 +58,21 @@ class ProductController extends Controller
     }
 
 
-    public function index()
+    public function index(IndexRequest $request): View
     {
-        var_dump(__LINE__);
+        $firstCategoryModel = new FirstCategory();
+        $firstCategories = $firstCategoryModel->getLists();
+
+        $secondCategoryModel = new SecondCategory();
+        $secondCategories = $secondCategoryModel->getLists();
+
+        $tabModel = new Tab();
+        $tabs = $tabModel->getLists();
+
+        $input = $request->validated();
+        $productModel = new Product();
+        $lists = $productModel->getAdminLists($input);
+
+        return view('admin.product.index', compact('firstCategories', 'secondCategories', 'tabs', 'input', 'lists'));
     }
 }

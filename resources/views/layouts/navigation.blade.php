@@ -47,12 +47,12 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle @if($page=='admin.product.create' || $page=='admin.product.list' || $page=='admin.product.detail' || $page=='admin.product.edit') active @endif" 
-                        @if($page=='admin.product.create' || $page=='admin.product.list' || $page=='admin.product.detail' || $page=='admin.product.edit')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">製品情報
+                    <a class="nav-link dropdown-toggle @if($page=='admin.product.create' || $page=='admin.product.index' || $page=='admin.product.show' || $page=='admin.product.edit') active @endif" 
+                        @if($page=='admin.product.create' || $page=='admin.product.index' || $page=='admin.product.show' || $page=='admin.product.edit')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">製品情報
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item @if($page=='admin.product.create') active @endif" href="{{ route('admin.product.create') }}">製品情報登録</a></li>
-                        <li><a class="dropdown-item @if($page=='admin.product.list') active @endif" href="{{ route('admin.top') }}">製品情報一覧</a></li>
+                        <li><a class="dropdown-item @if($page=='admin.product.index') active @endif" href="{{ route('admin.product.index') }}">製品情報一覧</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

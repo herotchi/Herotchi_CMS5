@@ -52,4 +52,42 @@ class Product extends Model
 
         return $this;
     }
+
+
+    public function getAdminLists(array $data)
+    {
+        $query = $this::with(['first_category', 'second_category', 'tabs']);
+
+        $query->when(Arr::exists($data, 'first_category_id') && $data['first_category_id'], function ($query) use ($data) {
+            return $query->where('first_category_id', $data['first_category_id']);
+        });
+
+        $query->when(Arr::exists($data, 'second_category_id') && $data['second_category_id'], function ($query) use ($data) {
+            return $query->where('second_category_id', $data['second_category_id']);
+        });
+
+        $query->when(Arr::exists($data, 'tab_ids') && $data['tab_ids'] && is_array($data['tab_ids']) && count($data['tab_ids']) > 0, function ($query) use ($data) {
+            return $query->whereIn('id', function ($subQuery) use ($data) {
+                $subQuery->select('product_id')
+                    ->from('tab_product')
+                    ->whereIn('tab_id', $data['tab_ids'])
+                    ->groupBy('product_id')
+                    ->havingRaw('COUNT(DISTINCT tab_id) = ?', [count($data['tab_ids'])]);
+            });
+        });
+
+        $query->when(Arr::exists($data, 'name') && $data['name'], function ($query) use ($data) {
+            return $query->where('name', 'like', "%{$data['name']}%");
+        });
+
+        $query->when(Arr::exists($data, 'release_flg') && $data['release_flg'], function ($query) use ($data) {
+            return $query->whereIn('release_flg', $data['release_flg']);
+        });
+
+        $query->orderBy('id', 'desc');
+
+        $lists = $query->paginate(ProductConsts::ADMIN_PAGENATE_LIST_LIMIT);
+
+        return $lists;
+    }
 }
