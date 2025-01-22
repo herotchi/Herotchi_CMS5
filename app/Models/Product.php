@@ -90,4 +90,22 @@ class Product extends Model
 
         return $lists;
     }
+
+
+    public function updateProduct(array $data, Product $product, string $fileName) 
+    {
+        $previousImages = explode('/', $product->image);
+
+        if ($fileName !== '') {
+            $product->image = 'storage/' . ProductConsts::IMAGE_FILE_DIR . '/' . $fileName;
+        }
+        $product->fill($data);
+        $product->update();
+
+        if ($fileName !== '') {
+            Storage::delete('public/' . ProductConsts::IMAGE_FILE_DIR . '/' . $previousImages[2]);
+        }
+
+        return $product;
+    }
 }

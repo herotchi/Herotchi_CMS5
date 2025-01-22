@@ -57,4 +57,4 @@
         </div>
     </div>
 </x-admin-layout>
-{{--<x-destroy-modal title="中カテゴリ" :route="route('admin.product.destroy', $product)" />--}}
+{{--<x-destroy-modal title="製品情報" :route="route('admin.product.destroy', $product)" />--}}
