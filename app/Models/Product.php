@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Storage;
 use App\Consts\ProductConsts;
 
 class Product extends Model
@@ -89,5 +88,17 @@ class Product extends Model
         $lists = $query->paginate(ProductConsts::ADMIN_PAGENATE_LIST_LIMIT);
 
         return $lists;
+    }
+
+
+    public function updateProduct(array $data, Product $product, string $fileName) 
+    {
+        if ($fileName !== '') {
+            $product->image = 'storage/' . ProductConsts::IMAGE_FILE_DIR . '/' . $fileName;
+        }
+        $product->fill($data);
+        $product->update();
+
+        return $product;
     }
 }
