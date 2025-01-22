@@ -12,6 +12,8 @@ use App\Http\Requests\Admin\Product\EditRequest;
 //use App\Http\Requests\Admin\Product\BatchDeleteRequest;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\Product;
 use App\Models\FirstCategory;
 use App\Models\SecondCategory;
@@ -102,6 +104,7 @@ class ProductController extends Controller
     {
         DB::transaction(function () use ($request, $product) {
             $input = $request->validated();
+            $previousImages = explode('/', $product->image);
             $image = $request->file('image');
             if ($image) {
                 $fileName = $image->hashName();
@@ -113,6 +116,10 @@ class ProductController extends Controller
             $productModel = new Product();
             $product = $productModel->updateProduct($input, $product, $fileName);
             $product->tabs()->sync($input['tab_ids']);
+
+            if ($fileName !== '') {
+                Storage::disk('public')->delete(ProductConsts::IMAGE_FILE_DIR . '/' . $previousImages[2]);
+            }
 
             $newsModel = new News();
             $newsModel->saveProductNews($product, ProductConsts::PRODUCT_NEWS_UPDATE_MESSAGE);

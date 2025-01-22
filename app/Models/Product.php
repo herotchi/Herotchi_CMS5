@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Storage;
 use App\Consts\ProductConsts;
 
 class Product extends Model
@@ -94,17 +93,11 @@ class Product extends Model
 
     public function updateProduct(array $data, Product $product, string $fileName) 
     {
-        $previousImages = explode('/', $product->image);
-
         if ($fileName !== '') {
             $product->image = 'storage/' . ProductConsts::IMAGE_FILE_DIR . '/' . $fileName;
         }
         $product->fill($data);
         $product->update();
-
-        if ($fileName !== '') {
-            Storage::delete('public/' . ProductConsts::IMAGE_FILE_DIR . '/' . $previousImages[2]);
-        }
 
         return $product;
     }
