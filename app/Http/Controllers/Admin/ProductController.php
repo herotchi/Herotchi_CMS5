@@ -44,7 +44,7 @@ class ProductController extends Controller
             $input = $request->validated();
             $image = $request->file('image');
             $fileName = $image->hashName();
-            $image->storeAs('public/' . ProductConsts::IMAGE_FILE_DIR, $fileName);
+            $image->storeAs(ProductConsts::IMAGE_FILE_DIR, $fileName, 'public');
 
             $productModel = new Product();
             $product = $productModel->insertProduct($input, $fileName);
@@ -74,5 +74,11 @@ class ProductController extends Controller
         $lists = $productModel->getAdminLists($input);
 
         return view('admin.product.index', compact('firstCategories', 'secondCategories', 'tabs', 'input', 'lists'));
+    }
+
+
+    public function show(Product $product): View
+    {
+        return view('admin.product.show', compact('product'));
     }
 }

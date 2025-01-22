@@ -84,8 +84,8 @@ Route::prefix('admin')->group(function () {
             Route::get('{product}', 'show')->whereNumber('product')->name('show');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
-            //Route::get('{product}/edit', 'edit')->whereNumber('product')->name('edit');
-            //Route::put('{product}/update', 'update')->whereNumber('product')->name('update');
+            Route::get('{product}/edit', 'edit')->whereNumber('product')->name('edit');
+            Route::put('{product}/update', 'update')->whereNumber('product')->name('update');
             //Route::delete('{product}/delete', 'delete')->whereNumber('product')->name('delete');
         });
 
