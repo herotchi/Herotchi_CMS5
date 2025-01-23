@@ -43,7 +43,12 @@ class FirstCategoryController extends Controller
 
     public function show(FirstCategory $firstCategory): View
     {
-        return view('admin.first_category.show', compact('firstCategory'));
+        $deleteFlg = true;
+        if ($firstCategory->second_categories()->exists() || $firstCategory->products()->exists()) {
+            $deleteFlg = false;
+        }
+
+        return view('admin.first_category.show', compact('firstCategory', 'deleteFlg'));
     }
 
 
@@ -64,8 +69,12 @@ class FirstCategoryController extends Controller
 
     public function destroy(FirstCategory $firstCategory): RedirectResponse
     {
-        // 中カテゴリと紐づいている大カテゴリがある場合は削除できないように仕様追加
-        $firstCategory->delete();
+        // 中カテゴリもしくは製品情報と紐づいている大カテゴリは削除できない
+        if ($firstCategory->second_categories()->exists() || $firstCategory->products()->exists()) {
+            return redirect()->route('admin.first_category.show', $firstCategory)->with('msg_failure', 'この大カテゴリは削除できません。');
+        } else {
+            $firstCategory->delete();
+        }
 
         return redirect()->route('admin.first_category.index')->with('msg_success', '大カテゴリを削除しました。');
     }
