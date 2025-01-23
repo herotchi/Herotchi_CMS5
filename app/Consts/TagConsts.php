@@ -2,7 +2,7 @@
 
 namespace App\Consts;
 
-class TabConsts
+class TagConsts
 {
     public const NAME_LENGTH_MAX = 20;
     public const CSV_FILE_MAX = 1024;
@@ -13,9 +13,9 @@ class TabConsts
         self::CSV_CODE_SJIS => 'SJIS',
     ];
     public const CSV_HEADER = [
-        'name' => 'タブ名'
+        'name' => 'タグ名'
     ];
-    public const CSV_FILE_DIR = 'tab';
+    public const CSV_FILE_DIR = 'tag';
 
     public const PAGENATE_LIST_LIMIT = 10;
 }

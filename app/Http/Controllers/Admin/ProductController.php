@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
 use App\Models\FirstCategory;
 use App\Models\SecondCategory;
-use App\Models\Tab;
+use App\Models\Tag;
 use App\Models\News;
 
 use App\Consts\ProductConsts;
@@ -33,10 +33,10 @@ class ProductController extends Controller
         $secondCategoryModel = new SecondCategory();
         $secondCategories = $secondCategoryModel->getLists();
 
-        $tabModel = new Tab();
-        $tabs = $tabModel->getLists();
+        $tagModel = new Tag();
+        $tags = $tagModel->getLists();
 
-        return view('admin.product.create', compact('firstCategories', 'secondCategories', 'tabs'));
+        return view('admin.product.create', compact('firstCategories', 'secondCategories', 'tags'));
     }
 
 
@@ -50,7 +50,7 @@ class ProductController extends Controller
 
             $productModel = new Product();
             $product = $productModel->insertProduct($input, $fileName);
-            $product->tabs()->attach($input['tab_ids']);
+            $product->tags()->attach($input['tag_ids']);
             
             $newsModel = new News();
             $newsModel->saveProductNews($product, ProductConsts::PRODUCT_NEWS_INSERT_MESSAGE);
@@ -68,14 +68,14 @@ class ProductController extends Controller
         $secondCategoryModel = new SecondCategory();
         $secondCategories = $secondCategoryModel->getLists();
 
-        $tabModel = new Tab();
-        $tabs = $tabModel->getLists();
+        $tagModel = new Tag();
+        $tags = $tagModel->getLists();
 
         $input = $request->validated();
         $productModel = new Product();
         $lists = $productModel->getAdminLists($input);
 
-        return view('admin.product.index', compact('firstCategories', 'secondCategories', 'tabs', 'input', 'lists'));
+        return view('admin.product.index', compact('firstCategories', 'secondCategories', 'tags', 'input', 'lists'));
     }
 
 
@@ -93,10 +93,10 @@ class ProductController extends Controller
         $secondCategoryModel = new SecondCategory();
         $secondCategories = $secondCategoryModel->getLists();
 
-        $tabModel = new Tab();
-        $tabs = $tabModel->getLists();
+        $tagModel = new Tag();
+        $tags = $tagModel->getLists();
 
-        return view('admin.product.edit', compact('firstCategories', 'secondCategories', 'tabs', 'product'));
+        return view('admin.product.edit', compact('firstCategories', 'secondCategories', 'tags', 'product'));
     }
 
 
@@ -115,7 +115,7 @@ class ProductController extends Controller
 
             $productModel = new Product();
             $product = $productModel->updateProduct($input, $product, $fileName);
-            $product->tabs()->sync($input['tab_ids']);
+            $product->tags()->sync($input['tag_ids']);
 
             if ($fileName !== '') {
                 Storage::disk('public')->delete(ProductConsts::IMAGE_FILE_DIR . '/' . $previousImages[2]);

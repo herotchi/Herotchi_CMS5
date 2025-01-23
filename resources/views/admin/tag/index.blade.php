@@ -2,19 +2,19 @@
     <nav aria-label="パンくずリスト">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.top') }}">TOP</a></li>
-            <li class="breadcrumb-item active" aria-current="page">タブ一覧</li>
+            <li class="breadcrumb-item active" aria-current="page">タグ一覧</li>
         </ol>
     </nav>
 
     <div class="card">
-        <form action="{{ route('admin.tab.index') }}" method="GET" novalidate>
-            <div class="card-header">タブ一覧</div>
+        <form action="{{ route('admin.tag.index') }}" method="GET" novalidate>
+            <div class="card-header">タグ一覧</div>
             <div class="card-body">
                 <div class="row g-3">
     
-                    <!-- タイトル -->
+                    <!-- タグ名 -->
                     <div class="col-md-12">
-                        <x-input-label for="name" value="タブ名" />
+                        <x-input-label for="name" value="タグ名" />
                         <x-text-input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" 
                             type="text" 
                             name="name" 
@@ -43,14 +43,14 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">タブ名</th>
+                        <th scope="col">タグ名</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach ($lists as $list)
                     <tr>
                         <td scope="rol">
-                            <a href="{{ route('admin.tab.show', $list) }}">{{ $list->name }}</a>
+                            <a href="{{ route('admin.tag.show', $list) }}">{{ $list->name }}</a>
                         </td>
                     </tr>
                 @endforeach

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Tab;
+namespace App\Http\Requests\Admin\Tag;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-use App\Consts\TabConsts;
+use App\Consts\TagConsts;
 use Illuminate\Support\Arr;
 
 class IndexRequest extends FormRequest
@@ -30,7 +30,7 @@ class IndexRequest extends FormRequest
     {
         return [
             //
-            'name' => 'bail|nullable|string|max:' . TabConsts::NAME_LENGTH_MAX,
+            'name' => 'bail|nullable|string|max:' . TagConsts::NAME_LENGTH_MAX,
         ];
     }
 
@@ -52,7 +52,7 @@ class IndexRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'タブ名',
+            'name' => 'タグ名',
         ];
     }
 }

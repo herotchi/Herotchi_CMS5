@@ -38,12 +38,12 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle @if($page=='admin.tab.create' || $page=='admin.tab.index' || $page=='admin.tab.show' || $page=='admin.tab.edit') active @endif" 
-                        @if($page=='admin.tab.create' || $page=='admin.tab.index' || $page=='admin.tab.show' || $page=='admin.tab.edit')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">タブ
+                    <a class="nav-link dropdown-toggle @if($page=='admin.tag.create' || $page=='admin.tag.index' || $page=='admin.tag.show' || $page=='admin.tab.edit') active @endif" 
+                        @if($page=='admin.tag.create' || $page=='admin.tag.index' || $page=='admin.tag.show' || $page=='admin.tag.edit')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">タグ
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item @if($page=='admin.tab.create') active @endif" href="{{ route('admin.tab.create') }}">タブ登録</a></li>
-                        <li><a class="dropdown-item @if($page=='admin.tab.index') active @endif" href="{{ route('admin.tab.index') }}">タブ一覧</a></li>
+                        <li><a class="dropdown-item @if($page=='admin.tag.create') active @endif" href="{{ route('admin.tag.create') }}">タグ登録</a></li>
+                        <li><a class="dropdown-item @if($page=='admin.tag.index') active @endif" href="{{ route('admin.tag.index') }}">タグ一覧</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

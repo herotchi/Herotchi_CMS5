@@ -169,8 +169,8 @@ return [
         'release_flg.*'         => '表示設定',
         'first_category_id'     => '大カテゴリ名',
         'second_category_id'    => '中カテゴリ名',
-        'tab_ids'               => 'タブ',
-        'tab_ids.*'             => 'タブ',
+        'tag_ids'               => 'タグ',
+        'tag_ids.*'             => 'タグ',
         'detail'                => '製品詳細',
     ],
 ];

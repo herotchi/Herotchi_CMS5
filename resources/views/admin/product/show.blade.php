@@ -20,10 +20,10 @@
                     <span>{{ $product->second_category->name }}</span>
                 </li>
                 <li class="list-group-item">
-                    <h5>タブ</h5>
+                    <h5>タグ</h5>
                     <span>
-                        @foreach ($product->tabs as $tab)
-                            {{ $tab->name }}@if (!$loop->last),@endif
+                        @foreach ($product->tags as $tag)
+                            {{ $tag->name }}@if (!$loop->last),@endif
                         @endforeach
                     </span>
                 </li>

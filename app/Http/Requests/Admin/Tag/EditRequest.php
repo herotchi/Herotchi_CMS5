@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Requests\Admin\Tab;
+namespace App\Http\Requests\Admin\Tag;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-use App\Consts\TabConsts;
+use Illuminate\Validation\Rule;
+use App\Models\Tag;
 
-class CreateRequest extends FormRequest
+
+use App\Consts\TagConsts;
+
+class EditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +29,13 @@ class CreateRequest extends FormRequest
     {
         return [
             //
-            'name' => 'bail|required|string|max:' . TabConsts::NAME_LENGTH_MAX . '|unique:tabs,name',
+            'name' => [
+                'bail',
+                'required',
+                'string',
+                'max:' . TagConsts::NAME_LENGTH_MAX,
+                Rule::unique(Tag::class)->ignore($this->route('tag')),
+            ],
         ];
     }
 
@@ -33,7 +43,7 @@ class CreateRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'タブ名',
+            'name' => 'タグ名',
         ];
     }
 }

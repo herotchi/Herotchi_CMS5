@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\TopController as AdminTopController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\FirstCategoryController;
 use App\Http\Controllers\Admin\SecondCategoryController;
-use App\Http\Controllers\Admin\TabController;
+use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
@@ -69,14 +69,14 @@ Route::prefix('admin')->group(function () {
             Route::delete('{second_category}', 'destroy')->name('destroy')->whereNumber('second_category');
         });
 
-        Route::prefix('tab')->name('tab.')->controller(TabController::class)->group(function () {
+        Route::prefix('tag')->name('tag.')->controller(TagController::class)->group(function () {
             Route::get('', 'index')->name('index');
-            Route::get('{tab}', 'show')->whereNumber('tab')->name('show');
+            Route::get('{tag}', 'show')->whereNumber('tag')->name('show');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
-            Route::get('{tab}/edit', 'edit')->name('edit')->whereNumber('tab');
-            Route::put('{tab}', 'update')->name('update')->whereNumber('tab');
-            Route::delete('{tab}', 'destroy')->name('destroy')->whereNumber('tab');
+            Route::get('{tag}/edit', 'edit')->name('edit')->whereNumber('tag');
+            Route::put('{tag}', 'update')->name('update')->whereNumber('tag');
+            Route::delete('{tag}', 'destroy')->name('destroy')->whereNumber('tag');
         });
 
         Route::prefix('product')->name('product.')->controller(AdminProductController::class)->group(function () {
