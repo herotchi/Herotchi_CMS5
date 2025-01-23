@@ -127,4 +127,17 @@ class ProductController extends Controller
 
         return redirect()->route('admin.product.show', $product)->with('msg_success', '製品情報を編集しました。');
     }
+
+
+    public function destroy(Product $product): RedirectResponse
+    {
+        DB::transaction(function () use ($product) {
+            $previousImages = explode('/', $product->image);
+            $product->tags()->detach();
+            $product->delete();
+            Storage::disk('public')->delete(ProductConsts::IMAGE_FILE_DIR . '/' . $previousImages[2]);
+        });
+
+        return redirect()->route('admin.product.index')->with('msg_success', '製品情報を削除しました。');
+    }
 }

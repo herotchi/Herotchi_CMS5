@@ -41,7 +41,7 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('news')->name('news.')->controller(AdminNewsController::class)->group(function () {
             Route::get('', 'index')->name('index');
-            Route::get('{news}', 'show')->whereNumber('news')->name('show');
+            Route::get('{news}', 'show')->name('show')->whereNumber('news');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
             Route::get('{news}/edit', 'edit')->name('edit')->whereNumber('news');
@@ -51,7 +51,7 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('first_category')->name('first_category.')->controller(FirstCategoryController::class)->group(function () {
             Route::get('', 'index')->name('index');
-            Route::get('{first_category}', 'show')->whereNumber('first_category')->name('show');
+            Route::get('{first_category}', 'show')->name('show')->whereNumber('first_category');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
             Route::get('{first_category}/edit', 'edit')->name('edit')->whereNumber('first_category');
@@ -61,7 +61,7 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('second_category')->name('second_category.')->controller(SecondCategoryController::class)->group(function () {
             Route::get('', 'index')->name('index');
-            Route::get('{second_category}', 'show')->whereNumber('second_category')->name('show');
+            Route::get('{second_category}', 'show')->name('show')->whereNumber('second_category');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
             Route::get('{second_category}/edit', 'edit')->name('edit')->whereNumber('second_category');
@@ -71,7 +71,7 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('tag')->name('tag.')->controller(TagController::class)->group(function () {
             Route::get('', 'index')->name('index');
-            Route::get('{tag}', 'show')->whereNumber('tag')->name('show');
+            Route::get('{tag}', 'show')->name('show')->whereNumber('tag');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
             Route::get('{tag}/edit', 'edit')->name('edit')->whereNumber('tag');
@@ -81,12 +81,12 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('product')->name('product.')->controller(AdminProductController::class)->group(function () {
             Route::get('', 'index')->name('index');
-            Route::get('{product}', 'show')->whereNumber('product')->name('show');
+            Route::get('{product}', 'show')->name('show')->whereNumber('product');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
-            Route::get('{product}/edit', 'edit')->whereNumber('product')->name('edit');
-            Route::put('{product}/update', 'update')->whereNumber('product')->name('update');
-            //Route::delete('{product}/delete', 'delete')->whereNumber('product')->name('delete');
+            Route::get('{product}/edit', 'edit')->name('edit')->whereNumber('product');
+            Route::put('{product}/update', 'update')->name('update')->whereNumber('product');
+            Route::delete('{product}', 'destroy')->name('destroy')->whereNumber('product');
         });
 
     });

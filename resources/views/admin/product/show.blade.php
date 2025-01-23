@@ -51,10 +51,10 @@
                     <a class="btn btn-primary w-50" href="{{ route('admin.product.edit', $product) }}" role="button">編集</a>
                     <x-secondary-button :href="route('admin.product.index')">戻る</x-secondary-button>
                     <!-- Button trigger modal -->
-                    {{--<button type="button" class="btn btn-outline-danger float-end" data-bs-toggle="modal" data-bs-target="#destroyModal">削除</button>--}}
+                    <button type="button" class="btn btn-outline-danger float-end" data-bs-toggle="modal" data-bs-target="#destroyModal">削除</button>
                 </div>
             </div>
         </div>
     </div>
 </x-admin-layout>
-{{--<x-destroy-modal title="製品情報" :route="route('admin.product.destroy', $product)" />--}}
+<x-destroy-modal title="製品情報" :route="route('admin.product.destroy', $product)" />
