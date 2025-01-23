@@ -2,19 +2,19 @@
     <nav aria-label="パンくずリスト">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.top') }}">TOP</a></li>
-            <li class="breadcrumb-item active" aria-current="page">タブ登録</li>
+            <li class="breadcrumb-item active" aria-current="page">タグ登録</li>
         </ol>
     </nav>
 
     <div class="card">
-        <form action="{{ route('admin.tab.store') }}" method="POST" novalidate>
+        <form action="{{ route('admin.tag.store') }}" method="POST" novalidate>
             @csrf
-            <div class="card-header">タブ登録</div>
+            <div class="card-header">タグ登録</div>
             <div class="card-body">
                 <div class="row g-3">
-                    <!-- タブ名 -->
+                    <!-- タグ名 -->
                     <div class="col-md-12">
-                        <x-input-label for="name" value="タブ名" :required="true"/>
+                        <x-input-label for="name" value="タグ名" :required="true"/>
                         <x-text-input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" 
                             type="text" 
                             name="name" 

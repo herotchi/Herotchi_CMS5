@@ -30,31 +30,31 @@
                         <x-input-error :message="$errors->first('second_category_id')" />
                     </div>
 
-                    <!-- タブ -->
+                    <!-- タグ -->
                     <div class="col-md-12">
-                        <x-input-label for="tab_ids" value="タブ" :required="true" /><br />
-                        @foreach($tabs as $tab)
-                            {{--<input type="checkbox" class="btn-check" id="tab_ids_{{ $tab->id }}" 
-                                value="{{ $tab->id }}" 
-                                name="tab_ids[]" 
-                                @checked(is_array(old('tab_ids')) && in_array($tab->id, old('tab_ids'))) 
+                        <x-input-label for="tag_ids" value="タグ" :required="true" /><br />
+                        @foreach($tags as $tag)
+                            {{--<input type="checkbox" class="btn-check" id="tag_ids_{{ $tag->id }}" 
+                                value="{{ $tag->id }}" 
+                                name="tag_ids[]" 
+                                @checked(is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids'))) 
                                 autocomplete="off">
-                            <label class="btn  btn-outline-success {{ $errors->has('tab_ids') ? ' is-invalid' : '' }}" 
-                                for="tab_ids_{{ $tab->id }}">{{ $tab->name }}</label>--}}
+                            <label class="btn  btn-outline-success {{ $errors->has('tag_ids') ? ' is-invalid' : '' }}" 
+                                for="tag_ids_{{ $tag->id }}">{{ $tag->name }}</label>--}}
                             <div class="form-check form-check-inline">
-                                <input type="checkbox" id="tab_ids_{{ $tab->id }}" 
-                                    class="form-check-input{{ $errors->has('tab_ids') || $errors->has('tab_ids.*') ? ' is-invalid' : '' }}" 
-                                    value="{{ $tab->id }}" 
-                                    name="tab_ids[]" 
-                                    @checked(is_array(old('tab_ids', $product->tabs->pluck('id')->toArray())) && in_array($tab->id, old('tab_ids', $product->tabs->pluck('id')->toArray()))) 
+                                <input type="checkbox" id="tag_ids_{{ $tag->id }}" 
+                                    class="form-check-input{{ $errors->has('tag_ids') || $errors->has('tag_ids.*') ? ' is-invalid' : '' }}" 
+                                    value="{{ $tag->id }}" 
+                                    name="tag_ids[]" 
+                                    @checked(is_array(old('tag_ids', $product->tags->pluck('id')->toArray())) && in_array($tag->id, old('tag_ids', $product->tags->pluck('id')->toArray()))) 
                                     autocomplete="off">
                                 <label class="form-check-label" 
-                                    for="tab_ids_{{ $tab->id }}">{{ $tab->name }}
+                                    for="tag_ids_{{ $tag->id }}">{{ $tag->name }}
                                 </label>
                             </div>
                         @endforeach
-                        <div class="mt-0{{ $errors->has('tab_ids') || $errors->has('tab_ids.*') ? ' is-invalid' : '' }}"></div>
-                        <x-input-error :message="$errors->first('tab_ids') ?: $errors->first('tab_ids.*')" />
+                        <div class="mt-0{{ $errors->has('tag_ids') || $errors->has('tag_ids.*') ? ' is-invalid' : '' }}"></div>
+                        <x-input-error :message="$errors->first('tag_ids') ?: $errors->first('tag_ids.*')" />
                     </div>
 
                     <!-- 製品名 -->

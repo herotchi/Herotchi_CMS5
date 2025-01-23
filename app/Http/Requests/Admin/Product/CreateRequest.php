@@ -31,8 +31,8 @@ class CreateRequest extends FormRequest
             //
             'first_category_id' => 'bail|required|integer|exists:first_categories,id',
             'second_category_id' => 'bail|required|integer|exists:second_categories,id',
-            'tab_ids' => 'bail|required|array',
-            'tab_ids.*' => 'integer|exists:tabs,id',
+            'tag_ids' => 'bail|required|array',
+            'tag_ids.*' => 'integer|exists:tags,id',
             'name' => 'bail|required|string|max:' . ProductConsts::NAME_LENGTH_MAX,
             'image' => 'bail|required|file|image|mimes:jpg,png|max:' . ProductConsts::IMAGE_FILE_MAX,
             'detail' => 'bail|required|string|max:' . ProductConsts::DETAIL_LENGTH_MAX,

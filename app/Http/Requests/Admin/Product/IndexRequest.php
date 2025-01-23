@@ -16,7 +16,7 @@ class IndexRequest extends FormRequest
     private $forms = [
         'first_category_id',
         'second_category_id',
-        'tab_ids',
+        'tag_ids',
         'name',
         'release_flg',
     ];
@@ -40,8 +40,8 @@ class IndexRequest extends FormRequest
             //
             'first_category_id' => 'bail|nullable|integer|exists:first_categories,id',
             'second_category_id' => 'bail|nullable|integer|exists:second_categories,id',
-            'tab_ids' => 'bail|nullable|array',
-            'tab_ids.*' => 'integer|exists:tabs,id',
+            'tag_ids' => 'bail|nullable|array',
+            'tag_ids.*' => 'integer|exists:tags,id',
             'name' => 'bail|nullable|string|max:' . ProductConsts::NAME_LENGTH_MAX,
             'release_flg' => 'bail|nullable|array',
             'release_flg.*' => Rule::in(array_keys(ProductConsts::RELEASE_FLG_LIST)),
@@ -55,7 +55,7 @@ class IndexRequest extends FormRequest
 
         foreach ($this->forms as $form) {
             if (!Arr::exists($data, $form)) {
-                if ($form === 'tab_ids' || $form === 'release_flg') {
+                if ($form === 'tag_ids' || $form === 'release_flg') {
                     $data[$form] = array();
                 } else {
                     $data[$form] = null;

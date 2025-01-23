@@ -35,10 +35,10 @@ class Product extends Model
         return $this->belongsTo(SecondCategory::class);
     }
 
-    public function tabs(): BelongsToMany
+    public function tags(): BelongsToMany
     {
         // デフォルトだと中間テーブルのテーブル名の組み合わせはアルファベット順になる
-        return $this->belongsToMany(Tab::class, 'tab_product')->withTimestamps();
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
 
@@ -55,7 +55,7 @@ class Product extends Model
 
     public function getAdminLists(array $data)
     {
-        $query = $this::with(['first_category', 'second_category', 'tabs']);
+        $query = $this::with(['first_category', 'second_category', 'tags']);
 
         $query->when(Arr::exists($data, 'first_category_id') && $data['first_category_id'], function ($query) use ($data) {
             return $query->where('first_category_id', $data['first_category_id']);
@@ -65,13 +65,13 @@ class Product extends Model
             return $query->where('second_category_id', $data['second_category_id']);
         });
 
-        $query->when(Arr::exists($data, 'tab_ids') && $data['tab_ids'] && is_array($data['tab_ids']) && count($data['tab_ids']) > 0, function ($query) use ($data) {
+        $query->when(Arr::exists($data, 'tag_ids') && $data['tag_ids'] && is_array($data['tag_ids']) && count($data['tag_ids']) > 0, function ($query) use ($data) {
             return $query->whereIn('id', function ($subQuery) use ($data) {
                 $subQuery->select('product_id')
-                    ->from('tab_product')
-                    ->whereIn('tab_id', $data['tab_ids'])
+                    ->from('product_tag')
+                    ->whereIn('tag_id', $data['tag_ids'])
                     ->groupBy('product_id')
-                    ->havingRaw('COUNT(DISTINCT tab_id) = ?', [count($data['tab_ids'])]);
+                    ->havingRaw('COUNT(DISTINCT tag_id) = ?', [count($data['tag_ids'])]);
             });
         });
 

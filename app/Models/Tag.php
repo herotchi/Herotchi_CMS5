@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use App\Consts\TabConsts;
+use App\Consts\TagConsts;
 use Illuminate\Support\Arr;
 
-class Tab extends Model
+class Tag extends Model
 {
     //
-    protected $table = 'tabs';
+    protected $table = 'tags';
     protected $primaryKey = 'id';
 
     protected $fillable = [
@@ -18,7 +18,7 @@ class Tab extends Model
     ];
 
 
-    public function insertTab(array $data)
+    public function insertTag(array $data)
     {
         $this->fill($data);
 
@@ -36,18 +36,18 @@ class Tab extends Model
 
         $query->orderBy('id', 'desc');
 
-        $lists = $query->paginate(TabConsts::PAGENATE_LIST_LIMIT);
+        $lists = $query->paginate(TagConsts::PAGENATE_LIST_LIMIT);
 
         return $lists;
     }
 
 
-    public function updateTab(array $data, $tab)
+    public function updateTag(array $data, $tag)
     {
-        $tab->fill($data);
-        $tab->update();
+        $tag->fill($data);
+        $tag->update();
 
-        return $tab;
+        return $tag;
     }
 
 

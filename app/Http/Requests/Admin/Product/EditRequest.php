@@ -31,8 +31,8 @@ class EditRequest extends FormRequest
             //
             'first_category_id' => 'bail|required|integer|exists:first_categories,id',
             'second_category_id' => 'bail|required|integer|exists:second_categories,id',
-            'tab_ids' => 'bail|required|array',
-            'tab_ids.*' => 'integer|exists:tabs,id',
+            'tag_ids' => 'bail|required|array',
+            'tag_ids.*' => 'integer|exists:tags,id',
             'name' => 'bail|required|string|max:' . ProductConsts::NAME_LENGTH_MAX,
             // 画像ファイルは過去にアップロードされたファイルをそのまま使う可能性がある
             'image' => 'bail|nullable|file|image|mimes:jpg,png|max:' . ProductConsts::IMAGE_FILE_MAX,
