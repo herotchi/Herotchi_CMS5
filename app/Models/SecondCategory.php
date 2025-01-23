@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use App\Consts\SecondCategoryConsts;
 use Illuminate\Support\Arr;
@@ -25,6 +26,12 @@ class SecondCategory extends Model
     }
 
 
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    
     public function insertSecondCategory(array $data)
     {
         $this->fill($data);

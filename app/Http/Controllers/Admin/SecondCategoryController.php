@@ -54,7 +54,12 @@ class SecondCategoryController extends Controller
 
     public function show(SecondCategory $secondCategory): View
     {
-        return view('admin.second_category.show', compact('secondCategory'));
+        $deleteFlg = true;
+        if ($secondCategory->products()->exists()) {
+            $deleteFlg = false;
+        }
+
+        return view('admin.second_category.show', compact('secondCategory', 'deleteFlg'));
     }
 
 
@@ -78,8 +83,12 @@ class SecondCategoryController extends Controller
 
     public function destroy(SecondCategory $secondCategory): RedirectResponse
     {
-        // 製品と紐づいている中カテゴリがある場合は削除できないように仕様追加
-        $secondCategory->delete();
+        // 製品と紐づいている中カテゴリは削除できない
+        if ($secondCategory->products()->exists()) {
+            return redirect()->route('admin.second_category.show', $secondCategory)->with('msg_failure', 'この中カテゴリは削除できません。');
+        } else {
+            $secondCategory->delete();
+        }
 
         return redirect()->route('admin.second_category.index', $secondCategory)->with('msg_success', '中カテゴリを削除しました。');
     }
