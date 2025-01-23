@@ -43,7 +43,12 @@ class TagController extends Controller
 
     public function show(Tag $tag): View
     {
-        return view('admin.tag.show', compact('tag'));
+        $deleteFlg = true;
+        if ($tag->products()->exists()) {
+            $deleteFlg = false;
+        }
+
+        return view('admin.tag.show', compact('tag', 'deleteFlg'));
     }
 
 
@@ -64,8 +69,12 @@ class TagController extends Controller
 
     public function destroy(Tag $tag): RedirectResponse
     {
-        // 製品と紐づいているタグがある場合は削除できないように仕様追加
-        $tag->delete();
+        // 製品と紐づいているタグは削除できない
+        if ($tag->products()->exists()) {
+            return redirect()->route('admin.tag.show', $tag)->with('msg_failure', 'このタグは削除できません。');
+        } else {
+            $tag->delete();
+        }
 
         return redirect()->route('admin.tag.index')->with('msg_success', 'タグを削除しました。');
     }
