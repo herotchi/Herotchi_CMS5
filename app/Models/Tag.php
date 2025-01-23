@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 use App\Consts\TagConsts;
 use Illuminate\Support\Arr;
@@ -16,6 +17,13 @@ class Tag extends Model
     protected $fillable = [
         'name',
     ];
+
+
+    public function products(): BelongsToMany
+    {
+        // デフォルトだと中間テーブルのテーブル名の組み合わせはアルファベット順になる
+        return $this->belongsToMany(Product::class)->withTimestamps();
+    }
 
 
     public function insertTag(array $data)

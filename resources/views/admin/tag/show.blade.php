@@ -22,11 +22,15 @@
                 <div class="col-12 text-center my-2">
                     <a class="btn btn-primary w-50" href="{{ route('admin.tag.edit', $tag) }}" role="button">編集</a>
                     <x-secondary-button :href="route('admin.tag.index')">戻る</x-secondary-button>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-danger float-end" data-bs-toggle="modal" data-bs-target="#destroyModal">削除</button>
+                    @if ($deleteFlg)
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-outline-danger float-end" data-bs-toggle="modal" data-bs-target="#destroyModal">削除</button>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 </x-admin-layout>
-<x-destroy-modal title="タグ" :route="route('admin.tag.destroy', $tag)" />
+@if ($deleteFlg)
+    <x-destroy-modal title="タグ" :route="route('admin.tag.destroy', $tag)" />
+@endif
