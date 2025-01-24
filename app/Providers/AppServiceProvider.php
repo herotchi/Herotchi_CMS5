@@ -12,6 +12,7 @@ use App\Consts\FirstCategoryConsts;
 use App\Consts\SecondCategoryConsts;
 use App\Consts\TagConsts;
 use App\Consts\ProductConsts;
+use App\Consts\MediaConsts;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,5 +36,6 @@ class AppServiceProvider extends ServiceProvider
         View::share('SecondCategoryConsts', SecondCategoryConsts::class);
         View::share('TagConsts', TagConsts::class);
         View::share('ProductConsts', ProductConsts::class);
+        View::share('MediaConsts', MediaConsts::class);
     }
 }
