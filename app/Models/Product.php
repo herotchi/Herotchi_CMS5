@@ -91,7 +91,7 @@ class Product extends Model
     }
 
 
-    public function updateProduct(array $data, Product $product, string $fileName) 
+    public function updateProduct(array $data, string $fileName, Product $product) 
     {
         if ($fileName !== '') {
             $product->image = 'storage/' . ProductConsts::IMAGE_FILE_DIR . '/' . $fileName;

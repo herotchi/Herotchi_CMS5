@@ -56,12 +56,12 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle @if($page=='admin.media.add' || $page=='admin.media.list' || $page=='admin.media.detail' || $page=='admin.media.edit') active @endif" 
-                        @if($page=='admin.media.add' || $page=='admin.media.list' || $page=='admin.media.detail' || $page=='admin.media.edit')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">メディア
+                    <a class="nav-link dropdown-toggle @if($page=='admin.media.create' || $page=='admin.media.index' || $page=='admin.media.show' || $page=='admin.media.edit') active @endif" 
+                        @if($page=='admin.media.create' || $page=='admin.media.index' || $page=='admin.media.show' || $page=='admin.media.edit')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">メディア
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item @if($page=='admin.media.add') active @endif" href="{{ route('admin.top') }}">メディア登録</a></li>
-                        <li><a class="dropdown-item @if($page=='admin.media.list') active @endif" href="{{ route('admin.top') }}">メディア一覧</a></li>
+                        <li><a class="dropdown-item @if($page=='admin.media.create') active @endif" href="{{ route('admin.media.create') }}">メディア登録</a></li>
+                        <li><a class="dropdown-item @if($page=='admin.media.index') active @endif" href="{{ route('admin.media.index') }}">メディア一覧</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

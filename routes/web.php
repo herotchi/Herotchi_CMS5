@@ -89,6 +89,16 @@ Route::prefix('admin')->group(function () {
             Route::delete('{product}', 'destroy')->name('destroy')->whereNumber('product');
         });
 
+        Route::prefix('media')->name('media.')->controller(MediaController::class)->group(function () {
+            Route::get('', 'index')->name('index');
+            //Route::get('{media}', 'show')->whereNumber('media')->name('show');
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+            //Route::get('{media}/edit', 'edit')->name('edit')->whereNumber('media');
+            //Route::put('{media}/update', 'update')->name('update')->whereNumber('media');
+            //Route::delete('{media}', 'destroy')->name('destroy')->whereNumber('media');
+        });
+
     });
 /*
     Route::prefix('first_category')->name('first_category.')->controller(FirstCategoryController::class)->group(function () {
@@ -129,7 +139,7 @@ Route::prefix('admin')->group(function () {
         Route::get('{product}/edit', 'edit')->whereNumber('product')->name('edit')->middleware('auth:admin');
         Route::put('{product}/update', 'update')->whereNumber('product')->name('update')->middleware('auth:admin');
         Route::delete('{product}/delete', 'delete')->whereNumber('product')->name('delete')->middleware('auth:admin');
-    });*/
+    });
 
     Route::prefix('media')->name('media.')->controller(MediaController::class)->group(function () {
         Route::get('', 'index')->name('index')->middleware('auth:admin');
@@ -139,7 +149,7 @@ Route::prefix('admin')->group(function () {
         Route::get('{media}/edit', 'edit')->whereNumber('media')->name('edit')->middleware('auth:admin');
         Route::put('{media}/update', 'update')->whereNumber('media')->name('update')->middleware('auth:admin');
         Route::delete('{media}/delete', 'delete')->whereNumber('media')->name('delete')->middleware('auth:admin');
-    });
+    });*/
 
     Route::prefix('contact')->name('contact.')->controller(AdminContactController::class)->group(function () {
         Route::get('', 'index')->name('index')->middleware('auth:admin');

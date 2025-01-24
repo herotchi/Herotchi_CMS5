@@ -114,7 +114,7 @@ class ProductController extends Controller
             }
 
             $productModel = new Product();
-            $product = $productModel->updateProduct($input, $product, $fileName);
+            $product = $productModel->updateProduct($input, $fileName, $product);
             $product->tags()->sync($input['tag_ids']);
 
             if ($fileName !== '') {
