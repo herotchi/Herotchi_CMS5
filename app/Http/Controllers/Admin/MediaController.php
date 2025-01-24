@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Media;
 
 use App\Consts\MediaConsts;
+use App\Http\Requests\Admin\Media\IndexRequest;
 
 class MediaController extends Controller
 {
@@ -41,7 +42,18 @@ class MediaController extends Controller
     }
 
 
-    public function index()
+    public function index(IndexRequest $request): View
+    {
+        $input = $request->validated();
+
+        $model = new Media();
+        $lists = $model->getAdminLists($input);
+
+        return view('admin.media.index', compact('lists', 'input'));
+    }
+
+
+    public function show()
     {
         var_dump(__LINE__);
     }
