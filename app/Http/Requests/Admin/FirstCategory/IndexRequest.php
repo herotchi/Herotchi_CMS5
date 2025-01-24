@@ -9,7 +9,7 @@ use Illuminate\Support\Arr;
 
 class IndexRequest extends FormRequest
 {
-    private $forms = [
+    private $_forms = [
         'name',
     ];
 
@@ -39,9 +39,9 @@ class IndexRequest extends FormRequest
     {
         $data = parent::validated($key = null, $default = null);
 
-        foreach ($this->forms as $form) {
-            if (!Arr::exists($data, $form)) {
-                $data[$form] = null;
+        foreach ($this->_forms as $_form) {
+            if (!Arr::exists($data, $_form)) {
+                $data[$_form] = null;
             }
         }
 

@@ -12,20 +12,24 @@
             <div class="card-body">
                 <div class="row g-3">
 
+                    <!-- メディア設定 -->
+                    <x-input-label for="media_flg" value="メディア設定" />
+                    <x-checkbox-input name="media_flg" :array="$MediaConsts::MEDIA_FLG_LIST" :old="old('media_flg', $input['media_flg'])" />
+                    <x-input-error :message="$errors->first('media_flg') ?: $errors->first('media_flg.*')" />
 
-                    <!-- 製品名 -->
+                    <!-- 代替テキスト -->
                     <div class="col-md-12">
-                        <x-input-label for="name" value="製品名" />
-                        <x-text-input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" 
+                        <x-input-label for="alt" value="製品名" />
+                        <x-text-input id="alt" class="form-control{{ $errors->has('alt') ? ' is-invalid' : '' }}" 
                             type="text" 
-                            name="name" 
-                            :value="old('name', $input['name'])" />
-                        <x-input-error :message="$errors->first('name')" />
+                            name="alt" 
+                            :value="old('alt', $input['alt'])" />
+                        <x-input-error :message="$errors->first('alt')" />
                     </div>
 
                     <!-- 表示設定 -->
                     <x-input-label for="release_flg" value="表示設定" />
-                    <x-checkbox-input name="release_flg" :array="$ProductConsts::RELEASE_FLG_LIST" :old="old('release_flg', $input['release_flg'])" />
+                    <x-checkbox-input name="release_flg" :array="$MediaConsts::RELEASE_FLG_LIST" :old="old('release_flg', $input['release_flg'])" />
                     <x-input-error :message="$errors->first('release_flg') ?: $errors->first('release_flg.*')" />
 
                 </div>
@@ -46,34 +50,21 @@
             {{ $lists->links('vendor.pagination.bootstrap-5_number') }}
         </div>
         <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">大カテゴリ名</th>
-                        <th>中カテゴリ名</th>
-                        <th>製品名</th>
-                        <th>表示設定</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="row">
                 @foreach ($lists as $list)
-                    <tr>
-                        <td scope="rol">
-                            {{ $list->first_category->name }}
-                        </td>
-                        <td>
-                            {{ $list->second_category->name }}
-                        </td>
-                        <td>
-                            <a href="{{ route('admin.product.show', $list) }}">{{ $list->name }}</a>
-                        </td>
-                        <td>
-                            {{ $ProductConsts::RELEASE_FLG_LIST[$list->release_flg] }}
-                        </td>
-                    </tr>
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                    <a class="link-underline link-underline-opacity-0" href="{{ route('admin.media.show', $list) }}">
+                        <div class="card text-bg-light">
+                            <img src="{{ asset($list->image) }}" class="card-img-top w-100 h-auto" alt="{{ $list->alt }}">
+                            <div class="card-body">
+                                <p class="card-text">メディア設定：{{ $MediaConsts::MEDIA_FLG_LIST[$list->media_flg] }}</p>
+                                <p class="card-text">表示設定：{{ $MediaConsts::RELEASE_FLG_LIST[$list->release_flg] }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                 @endforeach
-                </tbody>
-            </table>
+            </div>
         </div>
         <div class="card-footer">
             {{ $lists->withQueryString() }}

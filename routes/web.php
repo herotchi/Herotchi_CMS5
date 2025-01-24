@@ -91,7 +91,7 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('media')->name('media.')->controller(MediaController::class)->group(function () {
             Route::get('', 'index')->name('index');
-            //Route::get('{media}', 'show')->whereNumber('media')->name('show');
+            Route::get('{media}', 'show')->name('show')->whereNumber('media');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
             //Route::get('{media}/edit', 'edit')->name('edit')->whereNumber('media');

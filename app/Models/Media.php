@@ -28,4 +28,28 @@ class Media extends Model
 
         $this->save();
     }
+
+
+    public function getAdminLists(array $data)
+    {
+        $query = $this::query();
+
+        $query->when(Arr::exists($data, 'media_flg') && $data['media_flg'], function ($query) use ($data) {
+            return $query->whereIn('media_flg', $data['media_flg']);
+        });
+
+        $query->when(Arr::exists($data, 'alt') && $data['alt'], function ($query) use ($data) {
+            return $query->where('alt', 'like', "%{$data['alt']}%");
+        });
+
+        $query->when(Arr::exists($data, 'release_flg') && $data['release_flg'], function ($query) use ($data) {
+            return $query->whereIn('release_flg', $data['release_flg']);
+        });
+
+        $query->orderBy('id', 'desc');
+
+        $lists = $query->paginate(MediaConsts::PAGENATE_LIST_LIMIT);
+
+        return $lists;
+    }
 }

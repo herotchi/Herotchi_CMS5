@@ -13,7 +13,7 @@ use App\Consts\ProductConsts;
 
 class IndexRequest extends FormRequest
 {
-    private $forms = [
+    private $_forms = [
         'first_category_id',
         'second_category_id',
         'tag_ids',
@@ -53,12 +53,12 @@ class IndexRequest extends FormRequest
     {
         $data = parent::validated($key = null, $default = null);
 
-        foreach ($this->forms as $form) {
-            if (!Arr::exists($data, $form)) {
-                if ($form === 'tag_ids' || $form === 'release_flg') {
-                    $data[$form] = array();
+        foreach ($this->_forms as $_form) {
+            if (!Arr::exists($data, $_form)) {
+                if ($_form === 'tag_ids' || $_form === 'release_flg') {
+                    $data[$_form] = array();
                 } else {
-                    $data[$form] = null;
+                    $data[$_form] = null;
                 }
             }
         }
