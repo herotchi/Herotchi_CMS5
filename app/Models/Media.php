@@ -52,4 +52,20 @@ class Media extends Model
 
         return $lists;
     }
+
+
+    public function updateMedia(array $data, string $fileName, Media $media)
+    {
+        if ($fileName !== '') {
+            $media->image = 'storage/' . MediaConsts::IMAGE_FILE_DIR . '/' . $fileName;
+        }
+        $media->fill($data);
+        $media->update();
+
+        return $media;
+    }
+
+
+
+
 }

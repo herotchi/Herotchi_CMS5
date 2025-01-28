@@ -70,11 +70,11 @@
 
                     <!-- 製品画像 -->
                     <div class="col-md-12">
-                        <x-input-label for="image" value="製品画像" :required="true"/>
+                        <x-input-label for="image" value="製品画像" />
                         <img src="{{ asset($product->image) }}">
                         <input type="file" id="image"
                             class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" name="image"
-                            value="{{ old('image') }}" required>
+                            value="{{ old('image', $product->image) }}" required>
                         <div class="invalid-feedback">{{ $errors->first('image') }}</div>
                     </div>
 
