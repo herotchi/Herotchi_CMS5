@@ -38,11 +38,11 @@
                 <div class="col-12 text-center my-2">
                     <a class="btn btn-primary w-50" href="{{ route('admin.media.edit', $media) }}" role="button">編集</a>
                     <x-secondary-button :href="route('admin.media.index')">戻る</x-secondary-button>
-                    {{--<!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-danger float-end" data-bs-toggle="modal" data-bs-target="#destroyModal">削除</button>--}}
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-danger float-end" data-bs-toggle="modal" data-bs-target="#destroyModal">削除</button>
                 </div>
             </div>
         </div>
     </div>
 </x-admin-layout>
-{{--<x-destroy-modal title="製品情報" :route="route('admin.media.destroy', $product)" />--}}
+<x-destroy-modal title="メディア" :route="route('admin.media.destroy', $media)" />

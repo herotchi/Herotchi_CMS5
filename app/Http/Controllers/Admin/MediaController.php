@@ -87,4 +87,16 @@ class MediaController extends Controller
 
         return redirect()->route('admin.media.show', $media)->with('msg_success', 'メディアを編集しました。');
     }
+
+
+    public function destroy(Media $media): RedirectResponse
+    {
+        DB::transaction(function () use ($media) {
+            $previousImages = explode('/', $media->image);
+            $media->delete();
+            Storage::disk('public')->delete(MediaConsts::IMAGE_FILE_DIR . '/' . $previousImages[2]);
+        });
+
+        return redirect()->route('admin.media.index')->with('msg_success', 'メディアを削除しました。');
+    }
 }
