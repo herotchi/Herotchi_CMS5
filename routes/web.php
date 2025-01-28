@@ -94,8 +94,8 @@ Route::prefix('admin')->group(function () {
             Route::get('{media}', 'show')->name('show')->whereNumber('media');
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
-            //Route::get('{media}/edit', 'edit')->name('edit')->whereNumber('media');
-            //Route::put('{media}/update', 'update')->name('update')->whereNumber('media');
+            Route::get('{media}/edit', 'edit')->name('edit')->whereNumber('media');
+            Route::put('{media}/update', 'update')->name('update')->whereNumber('media');
             //Route::delete('{media}', 'destroy')->name('destroy')->whereNumber('media');
         });
 

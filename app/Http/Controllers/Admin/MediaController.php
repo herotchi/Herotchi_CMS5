@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\Media\CreateRequest;
-//use App\Http\Requests\Admin\Media\IndexRequest;
-//use App\Http\Requests\Admin\Media\EditRequest;
+use App\Http\Requests\Admin\Media\IndexRequest;
+use App\Http\Requests\Admin\Media\EditRequest;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Media;
 
 use App\Consts\MediaConsts;
-use App\Http\Requests\Admin\Media\IndexRequest;
 
 class MediaController extends Controller
 {
@@ -53,8 +52,39 @@ class MediaController extends Controller
     }
 
 
-    public function show()
+    public function show(Media $media): View
     {
-        var_dump(__LINE__);
+        return view('admin.media.show', compact('media'));
+    }
+
+
+    public function edit(Media $media): View
+    {
+        return view('admin.media.edit', compact('media'));
+    }
+
+
+    public function update(EditRequest $request, Media $media) :RedirectResponse
+    {
+        DB::transaction(function () use ($request, $media) {
+            $input = $request->validated();
+            $previousImages = explode('/', $media->image);
+            $image = $request->file('image');
+            if ($image) {
+                $fileName = $image->hashName();
+                $image->storeAs(MediaConsts::IMAGE_FILE_DIR, $fileName, 'public');
+            } else {
+                $fileName = '';
+            }
+
+            $mediaModel = new Media();
+            $media = $mediaModel->updateMedia($input, $fileName, $media);
+
+            if ($fileName !== '') {
+                Storage::disk('public')->delete(MediaConsts::IMAGE_FILE_DIR . '/' . $previousImages[2]);
+            }
+        });
+
+        return redirect()->route('admin.media.show', $media)->with('msg_success', 'メディアを編集しました。');
     }
 }
