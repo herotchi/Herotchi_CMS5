@@ -146,7 +146,7 @@
                 <span>※製品情報を一括削除します。よろしいですか？</span>
             </div>
             <div class="modal-footer justify-content-center">
-                <button type="button" class="btn btn-danger w-50" onclick="batchDestroy();">削除する</button>
+                <button type="button" class="btn btn-danger w-50" onclick="batchDestroy();">一括削除する</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">戻る</button>
             </div>
         </div>
