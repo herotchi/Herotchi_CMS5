@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 use Illuminate\Support\Arr;
 use App\Consts\ProductConsts;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -100,5 +101,17 @@ class Product extends Model
         $product->update();
 
         return $product;
+    }
+
+
+    public function batchDeleteProduct(array $data)
+    {
+        foreach ($data['delete_ids'] as $id) {
+            $product = $this::find($id);
+            $previousImages = explode('/', $product->image);
+            $product->tags()->detach();
+            $product->delete();
+            Storage::disk('public')->delete(ProductConsts::IMAGE_FILE_DIR . '/' . $previousImages[2]);
+        }
     }
 }

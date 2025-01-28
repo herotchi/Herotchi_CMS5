@@ -75,45 +75,83 @@
     </div>
     
     <div class="card mt-4">
-        <div class="card-header text-end">
-            {{ $lists->links('vendor.pagination.bootstrap-5_number') }}
-        </div>
-        <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">大カテゴリ名</th>
-                        <th>中カテゴリ名</th>
-                        <th>製品名</th>
-                        <th>表示設定</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach ($lists as $list)
-                    <tr>
-                        <td scope="rol">
-                            {{ $list->first_category->name }}
-                        </td>
-                        <td>
-                            {{ $list->second_category->name }}
-                        </td>
-                        <td>
-                            <a href="{{ route('admin.product.show', $list) }}">{{ $list->name }}</a>
-                        </td>
-                        <td>
-                            {{ $ProductConsts::RELEASE_FLG_LIST[$list->release_flg] }}
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-        <div class="card-footer">
-            {{ $lists->withQueryString() }}
-        </div>
+        <form method="POST" action="{{ route('admin.product.batch_destroy') }}" id="productBatchDestroy" novalidate>
+            @method('DELETE')
+            @csrf
+            <div class="card-header">
+                <div class="d-inline-flex">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger float-end" data-bs-toggle="modal" data-bs-target="#destroyModal">一括削除</button>
+                </div>
+                <div class="d-inline-flex float-end pt-1">
+                    {{ $lists->links('vendor.pagination.bootstrap-5_number') }}
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="all_checked" onclick="checkAll();">
+                                </div>
+                            </th>
+                            <th>大カテゴリ名</th>
+                            <th>中カテゴリ名</th>
+                            <th>製品名</th>
+                            <th>表示設定</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($lists as $list)
+                        <tr>
+                            <td scope="rol">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="{{ $list->id }}" name="delete_ids[]" id="delete_ids_{{ $list->id }}">
+                                </div>
+                            </td>
+                            <td>
+                                {{ $list->first_category->name }}
+                            </td>
+                            <td>
+                                {{ $list->second_category->name }}
+                            </td>
+                            <td>
+                                <a href="{{ route('admin.product.show', $list) }}">{{ $list->name }}</a>
+                            </td>
+                            <td>
+                                {{ $ProductConsts::RELEASE_FLG_LIST[$list->release_flg] }}
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                {{ $lists->withQueryString() }}
+            </div>
+        </form>
     </div>
 
 </x-admin-layout>
+<!-- Modal -->
+<div class="modal fade" id="destroyModal" tabindex="-1" aria-labelledby="destroyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="destroyModalLabel">製品情報一括削除</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <span>※製品情報を一括削除します。よろしいですか？</span>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-danger w-50" onclick="batchDestroy();">削除する</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">戻る</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     const firstSelect = document.getElementById('first_category_id');
     const secondSelect = document.getElementById('second_category_id');
@@ -197,11 +235,11 @@
             secondSelect.appendChild(newOption);
         }
     });
-/*
+
     // 全製品情報削除チェックボックスが操作されたとき
     function checkAll() {
         const allCheckbox = document.getElementById("all_checked");
-        const deleteCheckboxes = document.getElementsByName("delete_flg[]");
+        const deleteCheckboxes = document.getElementsByName("delete_ids[]");
         if (allCheckbox.checked) {
             for (var i = 0; i < deleteCheckboxes.length; i++) {
                 deleteCheckboxes[i].checked = true;
@@ -211,5 +249,15 @@
                 deleteCheckboxes[i].checked = false;
             }
         }
-    }*/
+    }
+
+    // 確認モーダルのボタンからsubmitを実行する
+    function batchDestroy() {
+        const form = document.getElementById('productBatchDestroy');
+        const button = event.target; // クリックされたボタン
+        if (form) {
+            button.disabled = true; // ボタンを無効化
+            form.submit();
+        }
+    }
 </script>

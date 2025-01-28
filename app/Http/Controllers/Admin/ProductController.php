@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\Product\CreateRequest;
 use App\Http\Requests\Admin\Product\IndexRequest;
 use App\Http\Requests\Admin\Product\EditRequest;
-//use App\Http\Requests\Admin\Product\BatchDeleteRequest;
+use App\Http\Requests\Admin\Product\BatchDestroyRequest;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -139,5 +139,16 @@ class ProductController extends Controller
         });
 
         return redirect()->route('admin.product.index')->with('msg_success', '製品情報を削除しました。');
+    }
+
+
+    public function batch_destroy(BatchDestroyRequest $request): RedirectResponse
+    {
+        DB::transaction(function () use ($request) {
+            $model = new Product();
+            $model->batchDeleteProduct($request->validated());
+        });
+
+        return redirect()->route('admin.product.index')->with('msg_success', '製品情報を一括削除しました。');
     }
 }

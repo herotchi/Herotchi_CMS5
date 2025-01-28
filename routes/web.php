@@ -87,6 +87,7 @@ Route::prefix('admin')->group(function () {
             Route::get('{product}/edit', 'edit')->name('edit')->whereNumber('product');
             Route::put('{product}/update', 'update')->name('update')->whereNumber('product');
             Route::delete('{product}', 'destroy')->name('destroy')->whereNumber('product');
+            Route::delete('', 'batch_destroy')->name('batch_destroy');
         });
 
         Route::prefix('media')->name('media.')->controller(MediaController::class)->group(function () {
