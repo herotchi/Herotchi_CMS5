@@ -35,11 +35,8 @@ class BatchDestroyRequest extends FormRequest
     {
         return [
             function (Validator $validator) {
-                if ($validator->errors()->has('delete_flg')) {
-                    $this->session()->flash('msg_failure', $validator->errors()->first());
-                } elseif ($validator->errors()->has('delete_flg.*')) {
-                    $this->session()->flash('msg_failure', '不正な値が入力されました。');
-
+                if ($validator->errors()->has('delete_ids') || $validator->errors()->has('delete_ids.*')) {
+                    session()->flash('msg_failure', $validator->errors()->first());
                 }
             }
         ];

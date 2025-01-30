@@ -174,5 +174,7 @@ return [
         'detail'                => '製品詳細',
         'media_flg'             => 'メディア設定',
         'alt'                   => '代替テキスト',
+        'delete_ids'            => '製品情報',
+        'delete_ids.*'          => '製品情報',
     ],
 ];
