@@ -37,7 +37,7 @@
                         <x-text-input id="url" class="form-control{{ $errors->has('url') ? ' is-invalid' : '' }}" 
                             type="text" 
                             name="url" 
-                            :value="old('url')" 
+                            :value="old('url', $news->url)" 
                             required />
                         <x-input-error :message="$errors->first('url')" />
                     </div>

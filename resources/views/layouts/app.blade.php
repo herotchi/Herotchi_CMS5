@@ -18,9 +18,21 @@
         {{--@vite(['resources/css/app.css', 'resources/js/app.js'])--}}
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     </head>
-    <body class="">
+    <body class="bg-body-tertiary h-100">
         <div class="">
-            @include('layouts.navigation')
+            @include('layouts.app-navigation')
+        </div>
+        <div class="container">
+            <!-- Page Content -->
+            <main>
+                {{ $slot }}
+            </main>
+            <x-toasts />
+        </div>
+    </body>
+    {{--<body class="">
+        <div class="">
+            @include('layouts.app-navigation')
 
             <!-- Page Heading -->
             @isset($header)
@@ -36,5 +48,5 @@
                 {{ $slot }}
             </main>
         </div>
-    </body>
+    </body>--}}
 </html>

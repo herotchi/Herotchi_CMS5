@@ -98,4 +98,17 @@ class News extends Model
 
         $this->save();
     }
+
+
+    public function getTopNews()
+    {
+        $today = new DateTime();
+        $query = $this::query();
+        $query->where('release_date', '<=', $today->format('Y-m-d'));
+        $query->where('release_flg', NewsConsts::RELEASE_FLG_ON);
+        $query->orderBy('release_date', 'desc')->orderBy('id', 'desc');
+        $lists = $query->limit(NewsConsts::TOP_LIST_LIMIT)->get();
+
+        return $lists;
+    }
 }
