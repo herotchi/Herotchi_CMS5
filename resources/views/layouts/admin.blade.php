@@ -20,7 +20,7 @@
     </head>
     <body class="bg-body-tertiary h-100">
         <div class="">
-            @include('layouts.navigation')
+            @include('layouts.admin-navigation')
         </div>
         <div class="container">
             <!-- Page Content -->

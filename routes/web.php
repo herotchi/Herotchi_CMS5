@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 
+use App\Http\Controllers\TopController;
 use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
@@ -22,6 +23,11 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [TopController::class, 'index'])->name('index');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,7 +43,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::name('admin.')->middleware('auth:admin')->group(function () {
-        Route::get('top', [AdminTopController::class, 'index'])->name('top');
+        Route::get('/', [AdminTopController::class, 'index'])->name('top');
 
         Route::prefix('news')->name('news.')->controller(AdminNewsController::class)->group(function () {
             Route::get('', 'index')->name('index');
@@ -150,7 +156,7 @@ Route::prefix('admin')->group(function () {
         Route::get('{media}/edit', 'edit')->whereNumber('media')->name('edit')->middleware('auth:admin');
         Route::put('{media}/update', 'update')->whereNumber('media')->name('update')->middleware('auth:admin');
         Route::delete('{media}/delete', 'delete')->whereNumber('media')->name('delete')->middleware('auth:admin');
-    });*/
+    });
 
     Route::prefix('contact')->name('contact.')->controller(AdminContactController::class)->group(function () {
         Route::get('', 'index')->name('index')->middleware('auth:admin');
@@ -170,7 +176,7 @@ Route::prefix('admin')->group(function () {
         Route::get('{user}/edit', 'edit')->whereNumber('user')->name('edit')->middleware('auth:admin');
         Route::put('{user}/update', 'update')->whereNumber('user')->name('update')->middleware('auth:admin');
         Route::delete('{user}/delete', 'delete')->whereNumber('user')->name('delete')->middleware('auth:admin');
-    });
+    });*/
 });
 
 Route::prefix('product')->name('product.')->controller(ProductController::class)->group(function () {
