@@ -66,17 +66,15 @@
                                     {{ $list->title }}<x-blank />
                                 </a>
                             @else
-                                {{--<a href="{{ route('news.detail', $list) }}">
+                                <a href="{{ route('news.show', $list) }}">
                                     {{ $list->title }}
-                                </a>--}}
-                                {{ $list->title }}
+                                </a>
                             @endif
                             </p>
                             @endforeach
-                            {{--<a class="float-end" href="{{ route('news.list') }}">
+                            <a class="float-end" href="{{ route('news.index') }}">
                                 <p>過去のお知らせを見る</p>
-                            </a>--}}
-                            <p>過去のお知らせを見る</p>
+                            </a>
                         </div>
                     </div>
                 </div>
