@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\NewsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,7 +27,12 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', [TopController::class, 'index'])->name('index');
+    Route::get('/', [TopController::class, 'index'])->name('top');
+
+    Route::prefix('news')->name('news.')->controller(NewsController::class)->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('{news}', 'show')->name('show')->whereNumber('news');
+    });
 });
 
 Route::middleware('auth')->group(function () {
