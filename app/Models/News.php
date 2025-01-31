@@ -111,4 +111,18 @@ class News extends Model
 
         return $lists;
     }
+
+
+    public function getLists()
+    {
+        $today = new DateTime();
+        $query = $this::query();
+        $query->where('release_date', '<=', $today->format('Y-m-d'));
+        $query->where('release_flg', NewsConsts::RELEASE_FLG_ON);
+        $query->orderBy('release_date', 'desc')->orderBy('id', 'desc');
+
+        $lists = $query->paginate(NewsConsts::PAGENATE_LIST_LIMIT);
+
+        return $lists;
+    }
 }

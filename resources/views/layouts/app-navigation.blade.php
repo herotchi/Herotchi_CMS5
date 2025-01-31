@@ -7,12 +7,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link @if($page=='index') active @endif" @if($page=='index')aria-current="page"@endif href="{{ route('index') }}">TOP</a>
-                </li>
-                {{--<li class="nav-item">
-                    <a class="nav-link @if($page=='news.list' || $page=='news.detail') active @endif" @if($page=='news.list' || $page=='news.detail')aria-current="page"@endif href="{{ route('news.list') }}">お知らせ</a>
+                    <a class="nav-link @if($page=='index') active @endif" @if($page=='top')aria-current="page"@endif href="{{ route('top') }}">TOP</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link @if($page=='news.index' || $page=='news.show') active @endif" @if($page=='news.index' || $page=='news.show')aria-current="page"@endif href="{{ route('news.index') }}">お知らせ</a>
+                </li>
+                {{--<li class="nav-item">
                     <a class="nav-link @if($page=='product.list' || $page=='product.detail') active @endif" @if($page=='product.list' || $page=='product.detail')aria-current="page"@endif href="{{ route('product.list') }}">製品情報</a>
                 </li>
                 <li class="nav-item">
