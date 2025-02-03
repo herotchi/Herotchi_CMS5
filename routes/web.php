@@ -33,6 +33,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('', 'index')->name('index');
         Route::get('{news}', 'show')->name('show')->whereNumber('news');
     });
+
+    Route::prefix('product')->name('product.')->controller(ProductController::class)->group(function () {
+        Route::get('', 'index')->name('index');
+        Route::get('{product}', 'show')->name('show')->whereNumber('product');
+    });
 });
 
 Route::middleware('auth')->group(function () {
