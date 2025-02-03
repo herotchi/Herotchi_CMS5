@@ -12,10 +12,10 @@
                 <li class="nav-item">
                     <a class="nav-link @if($page=='news.index' || $page=='news.show') active @endif" @if($page=='news.index' || $page=='news.show')aria-current="page"@endif href="{{ route('news.index') }}">お知らせ</a>
                 </li>
-                {{--<li class="nav-item">
-                    <a class="nav-link @if($page=='product.list' || $page=='product.detail') active @endif" @if($page=='product.list' || $page=='product.detail')aria-current="page"@endif href="{{ route('product.list') }}">製品情報</a>
-                </li>
                 <li class="nav-item">
+                    <a class="nav-link @if($page=='product.index' || $page=='product.show') active @endif" @if($page=='product.index' || $page=='product.show')aria-current="page"@endif href="{{ route('product.index') }}">製品情報</a>
+                </li>
+                {{--<li class="nav-item">
                     <a class="nav-link @if($page=='contact.add' || $page=='contact.confirm' || $page=='contact.complete') active @endif" @if($page=='contact.add' || $page=='contact.confirm' || $page=='contact.complete')aria-current="page"@endif href="{{ route('contact.add') }}">お問い合わせ</a>
                 </li>--}}
                 <li class="nav-item">
