@@ -34,8 +34,8 @@ class ProductController extends Controller
     }
 
 
-    public function show(Product $product)
+    public function show(Product $product): View
     {
-        var_dump(__LINE__);
+        return view('product.show', compact('product'));
     }
 }
