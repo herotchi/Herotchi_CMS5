@@ -14,8 +14,9 @@ use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 
 use App\Http\Controllers\TopController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,6 +38,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('product')->name('product.')->controller(ProductController::class)->group(function () {
         Route::get('', 'index')->name('index');
         Route::get('{product}', 'show')->name('show')->whereNumber('product');
+    });
+
+    Route::prefix('contact')->name('contact.')->controller(ContactController::class)->group(function () {
+        Route::get('create', 'create')->name('create');
+        Route::post('confirm', 'confirm')->name('confirm');
+        Route::post('store', 'store')->name('store');
+        Route::get('complete', 'complete')->name('complete');
     });
 });
 

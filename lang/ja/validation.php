@@ -177,5 +177,6 @@ return [
         'delete_ids'            => '製品情報',
         'delete_ids.*'          => '製品情報',
         'keyword'               => 'キーワード',
+        'body'                  => 'お問い合わせ内容',
     ],
 ];
