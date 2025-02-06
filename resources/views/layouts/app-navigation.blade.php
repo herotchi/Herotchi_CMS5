@@ -15,9 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link @if($page=='product.index' || $page=='product.show') active @endif" @if($page=='product.index' || $page=='product.show')aria-current="page"@endif href="{{ route('product.index') }}">製品情報</a>
                 </li>
-                {{--<li class="nav-item">
-                    <a class="nav-link @if($page=='contact.add' || $page=='contact.confirm' || $page=='contact.complete') active @endif" @if($page=='contact.add' || $page=='contact.confirm' || $page=='contact.complete')aria-current="page"@endif href="{{ route('contact.add') }}">お問い合わせ</a>
-                </li>--}}
+                <li class="nav-item">
+                    <a class="nav-link @if($page=='contact.create' || $page=='contact.confirm' || $page=='contact.complete') active @endif" @if($page=='contact.add' || $page=='contact.confirm' || $page=='contact.complete')aria-current="page"@endif href="{{ route('contact.create') }}">お問い合わせ</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link @if($page=='profile.edit') active @endif" @if($page=='profile.edit')aria-current="page"@endif href="{{ route('profile.edit') }}">プロフィール</a>
                 </li>
