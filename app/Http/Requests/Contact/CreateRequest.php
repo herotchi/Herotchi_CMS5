@@ -25,7 +25,7 @@ class CreateRequest extends FormRequest
     {
         return [
             //
-            'body' => 'bail|required|string|max:' . ContactConsts::MAIL_BODY_LENGTH_MAX,
+            'body' => 'bail|required|string|max:' . ContactConsts::BODY_LENGTH_MAX,
         ];
     }
 }

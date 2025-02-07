@@ -178,5 +178,10 @@ return [
         'delete_ids.*'          => '製品情報',
         'keyword'               => 'キーワード',
         'body'                  => 'お問い合わせ内容',
+        'no'                    => 'お問い合わせ番号',
+        'created_at_from'       => '投稿日～',
+        'created_at_to'         => '～投稿日',
+        'status'                => 'ステータス',
+        'status.*'              => 'ステータス',
     ],
 ];

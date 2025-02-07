@@ -5,8 +5,8 @@ namespace App\Consts;
 class ContactConsts
 {
     public const NO_LENGTH = 12;
-    public const MAIL_BODY_LENGTH_MAX = 2000;
-    public const MAIL_BODY_LIST_LENGTH_MAX = 50;
+    public const BODY_LENGTH_MAX = 2000;
+    public const BODY_LIST_LENGTH_MAX = 50;
     public const STATUS_COMPLETED = 1;
     public const STATUS_IN_PROGRESS = 2;
     public const STATUS_NOT_STARTED = 3;
