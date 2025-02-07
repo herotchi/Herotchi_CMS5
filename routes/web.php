@@ -129,7 +129,7 @@ Route::prefix('admin')->group(function () {
             Route::get('', 'index')->name('index');
             Route::get('{contact}', 'show')->name('show')->whereNumber('contact');
             //Route::get('{media}/edit', 'edit')->name('edit')->whereNumber('media');
-            //Route::put('{media}/update', 'update')->name('update')->whereNumber('media');
+            Route::put('{contact}/status_update', 'status_update')->name('status_update')->whereNumber('contact');
             //Route::delete('{media}', 'destroy')->name('destroy')->whereNumber('media');
         });
     });
