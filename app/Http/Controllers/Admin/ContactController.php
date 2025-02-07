@@ -27,4 +27,10 @@ class ContactController extends Controller
 
         return view('admin.contact.index', compact('lists', 'input'));
     }
+
+
+    public function show(Contact $contact): View
+    {
+        return view('admin.contact.show', compact('contact'));
+    }
 }
