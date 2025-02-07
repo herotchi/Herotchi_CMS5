@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Contact\IndexRequest;
+use App\Http\Requests\Admin\Contact\StatusUpdateRequest;
 use Illuminate\View\View;
 
 use App\Models\Contact;
@@ -32,5 +33,14 @@ class ContactController extends Controller
     public function show(Contact $contact): View
     {
         return view('admin.contact.show', compact('contact'));
+    }
+
+
+    public function status_update(StatusUpdateRequest $request, Contact $contact)
+    {
+        $model = new Contact();
+        $contact = $model->updateContactStatus($request->validated(), $contact);
+
+        return redirect()->route('admin.contact.show', $contact)->with('msg_success', 'ステータスを更新しました。');
     }
 }
