@@ -76,4 +76,13 @@ class Contact extends Model
 
         return $lists;
     }
+
+
+    public function updateContactStatus(array $data, $contact)
+    {
+        $contact->status = $data['status'];
+        $contact->update();
+
+        return $contact;
+    }
 }
