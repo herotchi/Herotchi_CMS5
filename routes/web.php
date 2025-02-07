@@ -125,6 +125,13 @@ Route::prefix('admin')->group(function () {
             Route::delete('{media}', 'destroy')->name('destroy')->whereNumber('media');
         });
 
+        Route::prefix('contact')->name('contact.')->controller(AdminContactController::class)->group(function () {
+            Route::get('', 'index')->name('index');
+            Route::get('{contact}', 'show')->name('show')->whereNumber('contact');
+            //Route::get('{media}/edit', 'edit')->name('edit')->whereNumber('media');
+            //Route::put('{media}/update', 'update')->name('update')->whereNumber('media');
+            //Route::delete('{media}', 'destroy')->name('destroy')->whereNumber('media');
+        });
     });
 /*
     Route::prefix('first_category')->name('first_category.')->controller(FirstCategoryController::class)->group(function () {

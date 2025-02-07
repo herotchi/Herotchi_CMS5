@@ -65,11 +65,11 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle @if($page=='admin.contact.list' || $page=='admin.contact.detail') active @endif" 
-                        @if($page=='admin.contact.list' || $page=='admin.contact.detail')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">お問い合わせ
+                    <a class="nav-link dropdown-toggle @if($page=='admin.contact.index' || $page=='admin.contact.show') active @endif" 
+                        @if($page=='admin.contact.index' || $page=='admin.contact.show')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">お問い合わせ
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item @if($page=='admin.contact.list') active @endif" href="{{ route('admin.top') }}">お問い合わせ一覧</a></li>
+                        <li><a class="dropdown-item @if($page=='admin.contact.index') active @endif" href="{{ route('admin.contact.index') }}">お問い合わせ一覧</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
