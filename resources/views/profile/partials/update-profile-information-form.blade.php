@@ -28,7 +28,7 @@
                     <x-input-label for="name" :value="__('Name')" :required="true" />
                     <x-text-input id="name" name="name" type="text" 
                         class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" 
-                        :value="old('name', $user->name)" required autofocus autocomplete="name" />
+                        :value="old('name', $user->name)" required autocomplete="name" />
                     <x-input-error :message="$errors->first('name')" />
                 </div>
             </div>
