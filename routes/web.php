@@ -30,6 +30,10 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [TopController::class, 'index'])->name('top');
 
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::prefix('news')->name('news.')->controller(NewsController::class)->group(function () {
         Route::get('', 'index')->name('index');
         Route::get('{news}', 'show')->name('show')->whereNumber('news');
@@ -48,11 +52,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 });
 
+/*
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+});*/
 
 Route::prefix('admin')->group(function () {
     Route::name('admin.')->controller(AuthenticatedSessionController::class)->group(function () {

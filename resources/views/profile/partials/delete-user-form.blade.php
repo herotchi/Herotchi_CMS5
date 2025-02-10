@@ -28,7 +28,7 @@
             </p>
 
             <div class="">
-                <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
+                <x-input-label for="password" value="{{ __('Password') }}" class="" />
 
                 <x-text-input
                     id="password"
@@ -38,7 +38,8 @@
                     placeholder="{{ __('Password') }}"
                 />
 
-                <x-input-error :messages="$errors->userDeletion->get('password')" class="" />
+                {{--<x-input-error :messages="$errors->userDeletion->get('password')" class="" />--}}
+                <x-input-error :message="$errors->userDeletion->first('password')" class="" />
             </div>
 
             <div class="">
