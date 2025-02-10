@@ -11,8 +11,12 @@
         </ol>
     </nav>
 
-    <div class="card">
+    <div class="card shadow-sm">
         @include('profile.partials.update-profile-information-form')
+    </div>
+
+    <div class="card shadow-sm mt-4">
+        @include('profile.partials.update-password-form')
     </div>
 
     <div class="">
@@ -23,11 +27,11 @@
                 </div>
             </div>--}}
 
-            <div class="">
+            {{--<div class="">
                 <div class="">
                     @include('profile.partials.update-password-form')
                 </div>
-            </div>
+            </div>--}}
 
             <div class="">
                 <div class="">
