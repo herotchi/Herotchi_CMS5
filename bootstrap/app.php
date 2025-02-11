@@ -34,7 +34,7 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             // 一般ユーザーだった場合はダッシュボードへリダイレクト
-            return route('dashboard');
+            return route('top');
         });
     })
     ->withExceptions(function (Exceptions $exceptions) {

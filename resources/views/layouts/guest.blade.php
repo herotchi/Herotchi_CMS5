@@ -51,6 +51,7 @@
                     {{ $slot }}
                 </div>
             </main>
+            <x-toasts />
         </div>
     </body>
 </html>

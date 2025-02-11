@@ -56,6 +56,7 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        //return Redirect::to('/');
+        return Redirect::to(route('register'))->with('msg_success', 'アカウントを削除しました。');
     }
 }
