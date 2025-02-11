@@ -44,12 +44,16 @@
                 </div>
             </div>
 
-            <div class="col-12">
-                @if (Route::has('password.request'))
-                    <a class="" href="{{ route('password.request') }}">
+            @if (Route::has('password.request'))
+                <div class="col-12">
+                    <a class="link-secondary" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
-                @endif
+                </div>
+            @endif
+
+            <div class="col-12">
+                <a class="" href="{{ route('register') }}">ユーザー登録をしたい方はこちら</a>
             </div>
             
             <div class="col-12">

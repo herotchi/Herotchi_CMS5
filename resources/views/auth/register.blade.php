@@ -48,7 +48,7 @@
             </div>
 
             <div class="col-12">
-                <a class=" d-flex " href="{{ route('login') }}">
+                <a class="" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
             </div>
