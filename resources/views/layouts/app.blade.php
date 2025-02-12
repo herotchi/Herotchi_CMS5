@@ -19,10 +19,12 @@
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     </head>
     <body class="bg-body-tertiary h-100">
-        <div class="">
-            @include('layouts.app-navigation')
-        </div>
-        <div class="container">
+        @if(auth()->check())
+            <div class="">
+                @include('layouts.app-navigation')
+            </div>
+        @endif
+        <div {{ $attributes->merge(['class' => 'container']) }}>
             <!-- Page Content -->
             <main>
                 {{ $slot }}
