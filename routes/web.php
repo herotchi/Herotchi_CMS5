@@ -26,6 +26,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/terms_of_use', [TopController::class, 'terms_of_use'])->name('terms_of_use');
+Route::get('/privacy_policy', [TopController::class, 'privacy_policy'])->name('privacy_policy');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [TopController::class, 'index'])->name('top');

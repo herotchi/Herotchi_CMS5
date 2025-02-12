@@ -183,5 +183,6 @@ return [
         'created_at_to'         => '～投稿日',
         'status'                => 'ステータス',
         'status.*'              => 'ステータス',
+        'user_policy'           => '利用規約',
     ],
 ];
