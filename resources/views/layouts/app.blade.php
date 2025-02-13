@@ -19,11 +19,13 @@
         <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     </head>
     <body class="bg-body-tertiary h-100">
-        @if(auth()->check())
-            <div class="">
+        <div class="">
+            @if (auth('admin')->check())
+                @include('layouts.admin-navigation')
+            @elseif(auth()->check())
                 @include('layouts.app-navigation')
-            </div>
-        @endif
+            @endif
+        </div>
         <div {{ $attributes->merge(['class' => 'container']) }}>
             <!-- Page Content -->
             <main>
