@@ -5,7 +5,7 @@
             <li class="breadcrumb-item active" aria-current="page">お問い合わせ一覧</li>
         </ol>
     </nav>
-    <div class="card">
+    <div class="card shadow mb-4">
         <form action="{{ route('admin.contact.index') }}" method="GET" novalidate>
             <div class="card-header">お問い合わせ一覧</div>
             <div class="card-body">
@@ -117,7 +117,7 @@
         </form>
     </div>
     
-    <div class="card mt-4">
+    <div class="card shadow mb-4">
         <div class="card-header text-end">
             {{ $lists->links('vendor.pagination.bootstrap-5_number') }}
         </div>

@@ -8,7 +8,7 @@
         </ol>
     </nav>
 
-    <div class="card">
+    <div class="card shadow mb-4">
         <form action="{{ route('admin.product.update', $product) }}" method="POST" enctype="multipart/form-data" novalidate>
             @method('PUT')
             @csrf
@@ -43,7 +43,7 @@
                                 for="tag_ids_{{ $tag->id }}">{{ $tag->name }}</label>--}}
                             <div class="form-check form-check-inline">
                                 <input type="checkbox" id="tag_ids_{{ $tag->id }}" 
-                                    class="form-check-input{{ $errors->has('tag_ids') || $errors->has('tag_ids.*') ? ' is-invalid' : '' }}" 
+                                    class="shadow-sm form-check-input{{ $errors->has('tag_ids') || $errors->has('tag_ids.*') ? ' is-invalid' : '' }}" 
                                     value="{{ $tag->id }}" 
                                     name="tag_ids[]" 
                                     @checked(is_array(old('tag_ids', $product->tags->pluck('id')->toArray())) && in_array($tag->id, old('tag_ids', $product->tags->pluck('id')->toArray()))) 

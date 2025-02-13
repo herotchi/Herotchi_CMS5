@@ -5,7 +5,7 @@
             <li class="breadcrumb-item active" aria-current="page">お問い合わせ</li>
         </ol>
     </nav>
-    <div class="card">
+    <div class="card shadow mb-4">
         <form action="{{ route('contact.confirm') }}" method="POST" novalidate>
             @csrf
             <div class="card-header">お問い合わせ</div>

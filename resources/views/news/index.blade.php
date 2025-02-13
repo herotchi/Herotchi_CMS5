@@ -6,7 +6,7 @@
         </ol>
     </nav>
     
-    <div class="card">
+    <div class="card shadow mb-4">
         <div class="card-body">
             @foreach($lists as $list)
             <p class="mb-1">{{ $list->release_date->format('Y年m月d日') }}</p>

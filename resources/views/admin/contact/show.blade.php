@@ -7,7 +7,7 @@
         </ol>
     </nav>
 
-    <div class="card">
+    <div class="card shadow mb-4">
         <form action="{{ route('admin.contact.status_update', $contact) }}" method="POST" novalidate>
             @method('PUT')
             @csrf

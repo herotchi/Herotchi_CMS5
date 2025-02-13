@@ -57,7 +57,7 @@ class ContactController extends Controller
     }
 
 
-    public function complete(Request $request): View
+    public function complete(Request $request): View|RedirectResponse
     {
         if ($request->session()->has('no')) {
             $no = $request->session()->get('no');

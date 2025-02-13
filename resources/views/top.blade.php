@@ -1,7 +1,7 @@
 <x-app-layout>
-    <div class="row">
+    <div class="row my-4">
         <div class="col-12">
-            <div id="carouselExampleIndicators" class="carousel slide">
+            <div id="carouselExampleIndicators" class="carousel slide shadow">
                 <div class="carousel-indicators">
                     @foreach($carousels as $carousel)
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $loop->index }}" aria-label="Slide {{ $loop->index }}" @if($loop->first) class="active" aria-current="true" @endif></button>
@@ -27,9 +27,9 @@
             </div>
         </div>
     </div>
-    <div class="row pt-3">
+    <div class="row mb-4">
         <div class="col-md-3">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-body">
                     <div class="card text-bg-primary mb-2">
                         <div class="card-body p-2">
@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="col-md-9">
-        <div class="card">
+            <div class="card shadow">
                 <div class="card-body">
                     <div class="card text-bg-success mb-2">
                         <div class="card-body p-2">

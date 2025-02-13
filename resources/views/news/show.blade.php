@@ -7,7 +7,7 @@
         </ol>
     </nav>
     
-    <div class="card">
+    <div class="card shadow mb-4">
         <div class="card-header"><h5 class="my-2">{{ $news->title }}</h5></div>
         <div class="card-body">
             <ul class="list-group list-group-flush">

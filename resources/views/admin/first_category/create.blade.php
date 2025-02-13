@@ -6,7 +6,7 @@
         </ol>
     </nav>
 
-    <div class="card">
+    <div class="card shadow mb-4">
         <form action="{{ route('admin.first_category.store') }}" method="POST" novalidate>
             @csrf
             <div class="card-header">大カテゴリ登録</div>

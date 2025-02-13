@@ -6,7 +6,7 @@
         </ol>
     </nav>
 
-    <div class="card">
+    <div class="card shadow mb-4">
         <form action="{{ route('admin.media.store') }}" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
             <div class="card-header">メディア登録</div>
