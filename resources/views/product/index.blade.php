@@ -5,9 +5,9 @@
             <li class="breadcrumb-item active" aria-current="page">製品情報一覧</li>
         </ol>
     </nav>
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-md-3">
-            <div class="card">
+            <div class="card shadow">
                 <form action="{{ route('product.index') }}" method="GET" novalidate>
                     <div class="card-header">製品情報検索</div>
                     <div class="card-body">
@@ -72,7 +72,7 @@
         </div>
 
         <div class="col-md-9">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-header text-end">
                     {{ $lists->links('vendor.pagination.bootstrap-5_number') }}
                 </div>

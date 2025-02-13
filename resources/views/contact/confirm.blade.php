@@ -6,7 +6,7 @@
         </ol>
     </nav>
 
-    <div class="card">
+    <div class="card shadow mb-4">
         <form action="{{ route('contact.store') }}" method="POST" novalidate>
             @csrf
             <div class="card-header">お問い合わせ確認</div>

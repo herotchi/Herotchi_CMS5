@@ -6,7 +6,7 @@
         </ol>
     </nav>
 
-    <div class="card">
+    <div class="card shadow mb-4">
         <form action="{{ route('admin.news.store') }}" method="POST" novalidate>
             @csrf
             <div class="card-header">お知らせ登録</div>

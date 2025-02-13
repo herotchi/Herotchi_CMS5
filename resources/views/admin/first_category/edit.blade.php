@@ -8,7 +8,7 @@
         </ol>
     </nav>
 
-    <div class="card">
+    <div class="card shadow mb-4">
         <form action="{{ route('admin.first_category.update', $firstCategory) }}" method="POST" novalidate>
             @method('PUT')
             @csrf

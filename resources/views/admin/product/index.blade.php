@@ -6,7 +6,7 @@
         </ol>
     </nav>
 
-    <div class="card">
+    <div class="card shadow mb-4">
         <form action="{{ route('admin.product.index') }}" method="GET" novalidate>
             <div class="card-header">製品情報一覧</div>
             <div class="card-body">
@@ -32,7 +32,7 @@
                         @foreach($tags as $tag)
                             <div class="form-check form-check-inline">
                                 <input type="checkbox" id="tag_ids_{{ $tag->id }}" 
-                                    class="form-check-input{{ $errors->has('tag_ids') || $errors->has('tag_ids.*') ? ' is-invalid' : '' }}" 
+                                    class="shadow-sm form-check-input{{ $errors->has('tag_ids') || $errors->has('tag_ids.*') ? ' is-invalid' : '' }}" 
                                     value="{{ $tag->id }}" 
                                     name="tag_ids[]" 
                                     @checked(is_array(old('tag_ids', $input['tag_ids'])) && in_array($tag->id, old('tag_ids', $input['tag_ids']))) 
@@ -74,7 +74,7 @@
         </form>
     </div>
     
-    <div class="card mt-4">
+    <div class="card shadow mb-4">
         <form method="POST" action="{{ route('admin.product.batch_destroy') }}" id="productBatchDestroy" novalidate>
             @method('DELETE')
             @csrf

@@ -6,7 +6,7 @@
         </ol>
     </nav>
 
-    <div class="card">
+    <div class="card shadow mb-4">
         <form action="{{ route('admin.news.index') }}" method="GET" novalidate>
             <div class="card-header">お知らせ一覧</div>
             <div class="card-body">
@@ -65,7 +65,7 @@
         </form>
     </div>
     
-    <div class="card mt-4">
+    <div class="card shadow mb-4">
         <div class="card-header text-end">
             {{ $lists->links('vendor.pagination.bootstrap-5_number') }}
         </div>

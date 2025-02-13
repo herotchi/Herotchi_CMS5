@@ -8,7 +8,7 @@
         </ol>
     </nav>
 
-    <div class="card">
+    <div class="card shadow mb-4">
         <form action="{{ route('admin.media.update', $media) }}" method="POST" enctype="multipart/form-data" novalidate>
             @method('PUT')
             @csrf

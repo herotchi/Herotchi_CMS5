@@ -7,7 +7,7 @@
         </ol>
     </nav>
 
-    <div class="card">
+    <div class="card shadow mb-4">
         <div class="card-header">大カテゴリ詳細</div>
         <div class="card-body">
             <ul class="list-group list-group-flush">
