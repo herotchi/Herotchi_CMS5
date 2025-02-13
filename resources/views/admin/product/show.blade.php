@@ -1,4 +1,4 @@
-<x-admin-layout>
+<x-app-layout>
     <nav aria-label="パンくずリスト">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.top') }}">TOP</a></li>
@@ -56,5 +56,5 @@
             </div>
         </div>
     </div>
-</x-admin-layout>
+</x-app-layout>
 <x-destroy-modal title="製品情報" :route="route('admin.product.destroy', $product)" />

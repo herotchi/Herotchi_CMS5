@@ -1,4 +1,4 @@
-<x-admin-layout>
+<x-app-layout>
     <nav aria-label="パンくずリスト">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.top') }}">TOP</a></li>
@@ -77,4 +77,4 @@
             </div>
         </form>
     </div>
-</x-admin-layout>
+</x-app-layout>

@@ -1,4 +1,4 @@
-<x-admin-layout>
+<x-app-layout>
     <nav aria-label="パンくずリスト">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.top') }}">TOP</a></li>
@@ -133,7 +133,7 @@
         </form>
     </div>
 
-</x-admin-layout>
+</x-app-layout>
 <!-- Modal -->
 <div class="modal fade" id="destroyModal" tabindex="-1" aria-labelledby="destroyModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

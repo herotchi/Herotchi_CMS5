@@ -1,4 +1,4 @@
-<x-admin-layout>
+<x-app-layout>
     <x-slot name="header">
         <h2 class="">
             {{ __('Dashboard') }}
@@ -26,4 +26,4 @@
             {{ __('Log Out') }}
         </x-dropdown-link>
     </form>
-</x-admin-layout>
+</x-app-layout>

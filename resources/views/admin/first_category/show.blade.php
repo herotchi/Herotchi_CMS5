@@ -1,4 +1,4 @@
-<x-admin-layout>
+<x-app-layout>
     <nav aria-label="パンくずリスト">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.top') }}">TOP</a></li>
@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-</x-admin-layout>
+</x-app-layout>
 @if ($deleteFlg)
     <x-destroy-modal title="大カテゴリ" :route="route('admin.first_category.destroy', $firstCategory)" />    
 @endif
