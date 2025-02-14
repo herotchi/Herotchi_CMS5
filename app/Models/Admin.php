@@ -10,6 +10,12 @@ class Admin extends Authenticatable
     //
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'login_id',
+        'password',
+    ];
+
     protected $hidden = [
         'password',
     ];

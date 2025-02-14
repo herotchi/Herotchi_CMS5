@@ -135,10 +135,17 @@ Route::prefix('admin')->group(function () {
         Route::prefix('contact')->name('contact.')->controller(AdminContactController::class)->group(function () {
             Route::get('', 'index')->name('index');
             Route::get('{contact}', 'show')->name('show')->whereNumber('contact');
-            //Route::get('{media}/edit', 'edit')->name('edit')->whereNumber('media');
             Route::put('{contact}/status_update', 'status_update')->name('status_update')->whereNumber('contact');
-            //Route::delete('{media}', 'destroy')->name('destroy')->whereNumber('media');
         });
+
+        Route::prefix('profile')->name('profile.')->controller(AdminProfileController::class)->group(function () {
+            Route::get('', 'edit')->name('edit');
+            Route::patch('update', 'update')->name('update');
+            Route::put('password_update', 'password_update')->name('password_update');
+            
+        });
+
+
     });
 /*
     Route::prefix('first_category')->name('first_category.')->controller(FirstCategoryController::class)->group(function () {
@@ -211,16 +218,5 @@ Route::prefix('admin')->group(function () {
         Route::delete('{user}/delete', 'delete')->whereNumber('user')->name('delete')->middleware('auth:admin');
     });*/
 });
-
-Route::prefix('product')->name('product.')->controller(ProductController::class)->group(function () {
-    //Route::get('', 'index')->name('index');
-    Route::get('{product}', 'show')->whereNumber('product')->name('show');
-    //Route::get('create', 'create')->name('create');
-    //Route::post('store', 'store')->name('store');
-    //Route::get('{product}/edit', 'edit')->whereNumber('product')->name('edit');
-    //Route::put('{product}/update', 'update')->whereNumber('product')->name('update');
-    //Route::delete('{product}/delete', 'delete')->whereNumber('product')->name('delete');
-});
-
 
 require __DIR__.'/auth.php';

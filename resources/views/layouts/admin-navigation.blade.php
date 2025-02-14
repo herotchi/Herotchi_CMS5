@@ -72,14 +72,17 @@
                         <li><a class="dropdown-item @if($page=='admin.contact.index') active @endif" href="{{ route('admin.contact.index') }}">お問い合わせ一覧</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item">
+                    <a class="nav-link @if($page=='admin.profile.edit') active @endif" @if($page=='admin.profile.edit')aria-current="page"@endif href="{{ route('admin.profile.edit') }}">プロフィール</a>
+                </li>
+                {{--<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle @if($page=='admin.user.login') active @endif" 
-                        @if($page=='admin.user.login')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">ユーザー
+                        @if($page=='admin.user.login')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">プロフィール
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item @if($page=='admin.user.login') active @endif" href="{{ route('admin.top') }}">ログイン情報変更</a></li>
                     </ul>
-                </li>
+                </li>--}}
             </ul>
             <form class="" action="{{ route('admin.destroy') }}" method="POST">
                 @csrf
