@@ -89,6 +89,8 @@ Route::prefix('admin')->group(function () {
             Route::get('{first_category}/edit', 'edit')->name('edit')->whereNumber('first_category');
             Route::put('{first_category}', 'update')->name('update')->whereNumber('first_category');
             Route::delete('{first_category}', 'destroy')->name('destroy')->whereNumber('first_category');
+            Route::get('csv_upload', 'csv_upload')->name('csv_upload');
+            Route::post('csv_import', 'csv_import')->name('csv_import');
         });
 
         Route::prefix('second_category')->name('second_category.')->controller(SecondCategoryController::class)->group(function () {
