@@ -2,24 +2,24 @@
     <nav aria-label="パンくずリスト">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.top') }}">TOP</a></li>
-            <li class="breadcrumb-item active" aria-current="page">大カテゴリCSV登録</li>
+            <li class="breadcrumb-item active" aria-current="page">タグCSV登録</li>
         </ol>
     </nav>
 
     <div class="card shadow mb-4">
-        <form action="{{ route('admin.first_category.csv_import') }}" method="POST" enctype="multipart/form-data" novalidate>
+        <form action="{{ route('admin.tag.csv_import') }}" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
-            <div class="card-header">大カテゴリCSV登録</div>
+            <div class="card-header">タグCSV登録</div>
             <div class="card-body">
                 <div class="row g-3">
     
                     <div class="col-md-12">
-                        <label><a href="{{ asset('storage/first_category/format.csv') }}" download="大カテゴリCSV登録フォーマット.csv">フォーマットをダウンロード</a></label>
+                        <label><a href="{{ asset('storage/tag/format.csv') }}" download="タグCSV登録フォーマット.csv">フォーマットをダウンロード</a></label>
                     </div>
     
                     <!-- 文字コード -->
                     <x-input-label for="code" value="文字コード" :required="true"/>
-                    <x-radio-input name="code" :array="$FirstCategoryConsts::CSV_CODE_LIST" :old="old('code')" />
+                    <x-radio-input name="code" :array="$TagConsts::CSV_CODE_LIST" :old="old('code')" />
                     <x-input-error :message="$errors->first('code')" />
     
                     <div class="col-md-12">
