@@ -101,6 +101,8 @@ Route::prefix('admin')->group(function () {
             Route::get('{second_category}/edit', 'edit')->name('edit')->whereNumber('second_category');
             Route::put('{second_category}', 'update')->name('update')->whereNumber('second_category');
             Route::delete('{second_category}', 'destroy')->name('destroy')->whereNumber('second_category');
+            Route::get('csv_upload', 'csv_upload')->name('csv_upload');
+            Route::post('csv_import', 'csv_import')->name('csv_import');
         });
 
         Route::prefix('tag')->name('tag.')->controller(TagController::class)->group(function () {
@@ -111,6 +113,8 @@ Route::prefix('admin')->group(function () {
             Route::get('{tag}/edit', 'edit')->name('edit')->whereNumber('tag');
             Route::put('{tag}', 'update')->name('update')->whereNumber('tag');
             Route::delete('{tag}', 'destroy')->name('destroy')->whereNumber('tag');
+            Route::get('csv_upload', 'csv_upload')->name('csv_upload');
+            Route::post('csv_import', 'csv_import')->name('csv_import');
         });
 
         Route::prefix('product')->name('product.')->controller(AdminProductController::class)->group(function () {

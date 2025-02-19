@@ -19,7 +19,6 @@ use App\Consts\FirstCategoryConsts;
 
 use SplFileObject;
 use DateTime;
-use Exception;
 
 class FirstCategoryController extends Controller
 {

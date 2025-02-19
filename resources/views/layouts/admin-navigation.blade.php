@@ -23,8 +23,8 @@
                     <a class="nav-link dropdown-toggle
                         @if($page=='admin.first_category.create' || $page=='admin.first_category.index' || $page=='admin.first_category.show' || $page=='admin.first_category.edit'|| $page=='admin.first_category.csv_upload' 
                         || $page=='admin.second_category.create' || $page=='admin.second_category.index' || $page=='admin.second_category.show' || $page=='admin.second_category.edit' || $page=='admin.second_category.csv_upload') active @endif" 
-                        @if($page=='admin.first_category.create' || $page=='admin.first_category.index' || $page=='admin.first_category.show' || $page=='admin.first_category.edit' 
-                        || $page=='admin.second_category.create' || $page=='admin.second_category.index' || $page=='admin.second_category.show' || $page=='admin.second_category.edit')aria-current="page"@endif
+                        @if($page=='admin.first_category.create' || $page=='admin.first_category.index' || $page=='admin.first_category.show' || $page=='admin.first_category.edit'|| $page=='admin.first_category.csv_upload' 
+                        || $page=='admin.second_category.create' || $page=='admin.second_category.index' || $page=='admin.second_category.show' || $page=='admin.second_category.edit' || $page=='admin.second_category.csv_upload')aria-current="page"@endif
                         href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">カテゴリ
                     </a>
                     <ul class="dropdown-menu">
@@ -33,17 +33,18 @@
                         <li><a class="dropdown-item @if($page=='admin.first_category.csv_add') active @endif" href="{{ route('admin.first_category.csv_upload') }}">大カテゴリCSV登録</a></li>
                         <li><a class="dropdown-item @if($page=='admin.second_category.create') active @endif" href="{{ route('admin.second_category.create') }}">中カテゴリ登録</a></li>
                         <li><a class="dropdown-item @if($page=='admin.second_category.index') active @endif" href="{{ route('admin.second_category.index') }}">中カテゴリ一覧</a></li>
-                        <li><a class="dropdown-item @if($page=='admin.second_category.csv_add') active @endif" href="{{ route('admin.top') }}">中カテゴリCSV登録</a></li>
+                        <li><a class="dropdown-item @if($page=='admin.second_category.csv_add') active @endif" href="{{ route('admin.second_category.csv_upload') }}">中カテゴリCSV登録</a></li>
                         
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle @if($page=='admin.tag.create' || $page=='admin.tag.index' || $page=='admin.tag.show' || $page=='admin.tab.edit') active @endif" 
-                        @if($page=='admin.tag.create' || $page=='admin.tag.index' || $page=='admin.tag.show' || $page=='admin.tag.edit')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">タグ
+                    <a class="nav-link dropdown-toggle @if($page=='admin.tag.create' || $page=='admin.tag.index' || $page=='admin.tag.show' || $page=='admin.tab.edit' || $page=='admin.tab.csv_upload') active @endif" 
+                        @if($page=='admin.tag.create' || $page=='admin.tag.index' || $page=='admin.tag.show' || $page=='admin.tag.edit' || $page=='admin.tab.csv_upload')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">タグ
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item @if($page=='admin.tag.create') active @endif" href="{{ route('admin.tag.create') }}">タグ登録</a></li>
                         <li><a class="dropdown-item @if($page=='admin.tag.index') active @endif" href="{{ route('admin.tag.index') }}">タグ一覧</a></li>
+                        <li><a class="dropdown-item @if($page=='admin.tag.csv_upload') active @endif" href="{{ route('admin.tag.csv_upload') }}">タグCSV登録</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
