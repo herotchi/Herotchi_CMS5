@@ -18,7 +18,7 @@
                     </div>
     
                     <!-- 文字コード -->
-                    <x-input-label for="code" value="表示設定" :required="true"/>
+                    <x-input-label for="code" value="文字コード" :required="true"/>
                     <x-radio-input name="code" :array="$SecondCategoryConsts::CSV_CODE_LIST" :old="old('code')" />
                     <x-input-error :message="$errors->first('code')" />
     
