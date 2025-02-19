@@ -142,6 +142,7 @@ Route::prefix('admin')->group(function () {
             Route::get('', 'index')->name('index');
             Route::get('{contact}', 'show')->name('show')->whereNumber('contact');
             Route::put('{contact}/status_update', 'status_update')->name('status_update')->whereNumber('contact');
+            Route::get('csv_export', 'csv_export')->name('csv_export');
         });
 
         Route::prefix('profile')->name('profile.')->controller(AdminProfileController::class)->group(function () {

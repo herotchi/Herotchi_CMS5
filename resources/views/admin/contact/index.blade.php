@@ -56,53 +56,6 @@
                     <x-checkbox-input name="status" :array="$ContactConsts::STATUS_LIST" :old="old('status', $input['status'])" />
                     <x-input-error :message="$errors->first('status') ?: $errors->first('status.*')" />
 
-                    {{--
-                    <div class="col-md-6">
-                        <label for="no" class="form-label">お問い合わせ番号</label>
-                        <input type="text" id="no"
-                            class="form-control{{ $errors->has('no') ? ' is-invalid' : '' }}" name="no"
-                            value="{{ old('no', $input['no']) }}" inputmode="numeric">
-                        <div class="invalid-feedback">{{ $errors->first('no') }}</div>
-                    </div>
-    
-                    <div class="col-md-6">
-                        <label for="mail_body" class="form-label">お問い合わせ内容</label>
-                        <input type="text" id="mail_body"
-                            class="form-control{{ $errors->has('mail_body') ? ' is-invalid' : '' }}" name="mail_body"
-                            value="{{ old('mail_body', $input['mail_body']) }}">
-                        <div class="invalid-feedback">{{ $errors->first('mail_body') }}</div>
-                    </div>
-    
-                    <div class="col-md-6">
-                        <label for="created_at_from" class="form-label">投稿日～</label>
-                        <input type="date" id="created_at_from"
-                            class="form-control{{ $errors->has('created_at_from') ? ' is-invalid' : '' }}" name="created_at_from"
-                            value="{{ old('created_at_from', $input['created_at_from']) }}">
-                        <div class="invalid-feedback">{{ $errors->first('created_at_from') }}</div>
-                    </div>
-    
-                    <div class="col-md-6">
-                        <label for="created_at_to" class="form-label">～投稿日</label>
-                        <input type="date" id="created_at_to"
-                            class="form-control{{ $errors->has('created_at_to') ? ' is-invalid' : '' }}" name="created_at_to"
-                            value="{{ old('created_at_to', $input['created_at_to']) }}">
-                        <div class="invalid-feedback">{{ $errors->first('created_at_to') }}</div>
-                    </div>
-    
-                    <label class="form-label">ステータス</label>
-                    <div class="btn-group mt-0">
-                        @foreach($ContactConsts::STATUS_LIST as $key => $value)
-                        <input type="checkbox" class="btn-check" name="status[]" id="status_{{ $key }}"
-                            value="{{ $key }}" autocomplete="off" @if(old('status')==$key || in_array($key, $input['status'])) checked @endif>
-                        <label class="btn btn-outline-success form-control{{ $errors->has('status') ? ' is-invalid' : '' }}"
-                            for="status_{{ $key }}">{{ $value }}</label>
-                        @endforeach
-                    </div>
-                    <div class="mt-0{{ $errors->has('status') ? ' is-invalid' : '' }}"></div>
-                    <div class="invalid-feedback">{{ $errors->first('status') }}</div>
-                    <div class="mt-0{{ $errors->has('status.*') ? ' is-invalid' : '' }}"></div>
-                    <div class="invalid-feedback">{{ $errors->first('status.*') }}</div>--}}
-    
                 </div>
             </div>
             <div class="card-footer">
@@ -110,7 +63,7 @@
                     <div class="col-12 text-center my-2">
                         <button class="btn btn-primary w-50" type="submit" name="submit" value="submit">検索</button>
                         <a class="btn btn-secondary" href="{{ route('admin.top') }}" role="button">戻る</a>
-                        {{--<button class="btn btn-success float-end" type="submit" name="csv_export" value="csv_export">CSVダウンロード</button>--}}
+                        <button class="btn btn-success float-end" type="submit" name="csv_export" value="csv_export">CSVダウンロード</button>
                     </div>
                 </div>
             </div>
