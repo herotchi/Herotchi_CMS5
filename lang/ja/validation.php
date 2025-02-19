@@ -185,6 +185,7 @@ return [
         'status.*'              => 'ステータス',
         'user_policy'           => '利用規約',
         'login_id'              => 'ログインID',
+        'code'                  => '文字コード',
         'csv_file'              => 'CSVファイル',
     ],
 ];
