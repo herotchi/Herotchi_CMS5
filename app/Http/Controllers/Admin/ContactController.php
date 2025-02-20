@@ -20,9 +20,16 @@ class ContactController extends Controller
     {
         $input = $request->validated();
 
+        // 検索条件セッションを持っていて、GETパラメータがない場合
+        if ($request->session()->has('contact') && !$request->hasAny($request->forms)) {
+            //　セッションから検索条件を取得する
+            $input = $request->session()->pull('contact');
+        }
+        $request->session()->put('contact', $input);
+
         // CSV出力の場合、検索条件をセッションに保持してリダイレクト
         if ($request->input('csv_export') === 'csv_export') {
-            $request->session()->put('csv_export', $input);
+            //$request->session()->put('csv_export', $input);
             return redirect()->route('admin.contact.csv_export');
         }
 
@@ -51,7 +58,7 @@ class ContactController extends Controller
     public function csv_export(Request $request)
     {
         // レコードを取得
-        $input = $request->session()->pull('csv_export');
+        $input = $request->session()->pull('contact');
         $model = new Contact();
         $query = $model->getAdminCsvExport($input);
 
@@ -70,7 +77,7 @@ class ContactController extends Controller
         } elseif (Arr::exists($input, 'created_at_to') && $input['created_at_to']) {
             $fileName = $fileName . '～' . $input['created_at_to'] . '.csv';
         } else {
-            $fileName = $fileName . '_all.csv';
+            $fileName = $fileName . '.csv';
         }
 
         $callback = function() use ($query)

@@ -41,6 +41,14 @@ class TagController extends Controller
     public function index(IndexRequest $request): View
     {
         $input = $request->validated();
+
+        // 検索条件セッションを持っていて、GETパラメータがない場合
+        if ($request->session()->has('tag') && !$request->hasAny($request->forms)) {
+            //　セッションから検索条件を取得する
+            $input = $request->session()->pull('tag');
+        }
+        $request->session()->put('tag', $input);
+
         $model = new Tag();
         $lists = $model->getAdminLists($input);
 

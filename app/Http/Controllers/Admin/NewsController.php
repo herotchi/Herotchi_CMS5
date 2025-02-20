@@ -34,6 +34,14 @@ class NewsController extends Controller
     public function index(IndexRequest $request): View
     {
         $input = $request->validated();
+
+        // 検索条件セッションを持っていて、GETパラメータがない場合
+        if ($request->session()->has('news') && !$request->hasAny($request->forms)) {
+            //　セッションから検索条件を取得する
+            $input = $request->session()->pull('news');
+        }
+        $request->session()->put('news', $input);
+
         $model = new News();
         $lists = $model->getAdminLists($input);
 

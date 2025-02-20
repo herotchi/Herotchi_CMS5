@@ -47,6 +47,13 @@ class SecondCategoryController extends Controller
     {
         $input = $request->validated();
 
+        // 検索条件セッションを持っていて、GETパラメータがない場合
+        if ($request->session()->has('second_category') && !$request->hasAny($request->forms)) {
+            //　セッションから検索条件を取得する
+            $input = $request->session()->pull('second_category');
+        }
+        $request->session()->put('second_category', $input);
+
         $firstCategoryModel = new FirstCategory();
         $firstCategories = $firstCategoryModel->getLists();
 

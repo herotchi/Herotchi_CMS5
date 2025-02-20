@@ -45,6 +45,13 @@ class MediaController extends Controller
     {
         $input = $request->validated();
 
+        // 検索条件セッションを持っていて、GETパラメータがない場合
+        if ($request->session()->has('media') && !$request->hasAny($request->forms)) {
+            //　セッションから検索条件を取得する
+            $input = $request->session()->pull('media');
+        }
+        $request->session()->put('media', $input);
+
         $model = new Media();
         $lists = $model->getAdminLists($input);
 
