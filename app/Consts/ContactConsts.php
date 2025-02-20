@@ -16,5 +16,5 @@ class ContactConsts
         self::STATUS_NOT_STARTED => '未対応',
     ];
 
-    public const PAGENATE_LIST_LIMIT = 2;
+    public const PAGENATE_LIST_LIMIT = 20;
 }
