@@ -9,8 +9,9 @@ use Illuminate\Support\Arr;
 
 class IndexRequest extends FormRequest
 {
-    private $_forms = [
+    public $forms = [
         'name',
+        'page'
     ];
 
     /**
@@ -31,6 +32,7 @@ class IndexRequest extends FormRequest
         return [
             //
             'name' => 'bail|nullable|string|max:' . TagConsts::NAME_LENGTH_MAX,
+            'page' => 'bail|nullable|integer|numeric',
         ];
     }
 
@@ -39,9 +41,9 @@ class IndexRequest extends FormRequest
     {
         $data = parent::validated($key = null, $default = null);
 
-        foreach ($this->_forms as $_form) {
-            if (!Arr::exists($data, $_form)) {
-                $data[$_form] = null;
+        foreach ($this->forms as $form) {
+            if (!Arr::exists($data, $form)) {
+                $data[$form] = null;
             }
         }
 

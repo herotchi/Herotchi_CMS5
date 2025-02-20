@@ -19,7 +19,7 @@
 
                     <!-- 代替テキスト -->
                     <div class="col-md-12">
-                        <x-input-label for="alt" value="製品名" />
+                        <x-input-label for="alt" value="代替テキスト" />
                         <x-text-input id="alt" class="form-control{{ $errors->has('alt') ? ' is-invalid' : '' }}" 
                             type="text" 
                             name="alt" 

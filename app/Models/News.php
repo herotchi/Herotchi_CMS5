@@ -64,7 +64,8 @@ class News extends Model
 
         $query->orderBy('release_date', 'desc')->orderBy('id', 'desc');
 
-        $lists = $query->paginate(NewsConsts::ADMIN_PAGENATE_LIST_LIMIT);
+        $lists = $query->paginate(NewsConsts::ADMIN_PAGENATE_LIST_LIMIT, ['*'], 'page', $data['page']);
+        $lists->appends($data);
 
         return $lists;
     }

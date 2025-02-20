@@ -11,12 +11,13 @@ use App\Consts\ContactConsts;
 
 class IndexRequest extends FormRequest
 {
-    private $_forms = [
+    public $forms = [
         'no',
         'body',
         'created_at_from',
         'created_at_to',
         'status',
+        'page',
     ];
 
     /**
@@ -42,6 +43,7 @@ class IndexRequest extends FormRequest
             'created_at_to' => 'bail|nullable|date_format:Y-m-d|after_or_equal:2019/01/01|before_or_equal:2037/12/31|after_or_equal:created_at_from',
             'status' => 'bail|nullable|array',
             'status.*' => Rule::in(array_keys(ContactConsts::STATUS_LIST)),
+            'page' => 'bail|nullable|integer|numeric',
         ];
     }
 
@@ -50,12 +52,12 @@ class IndexRequest extends FormRequest
     {
         $data = parent::validated($key = null, $default = null);
 
-        foreach ($this->_forms as $_form) {
-            if (!Arr::exists($data, $_form)) {
-                if ($_form === 'status') {
-                    $data[$_form] = array();
+        foreach ($this->forms as $form) {
+            if (!Arr::exists($data, $form)) {
+                if ($form === 'status') {
+                    $data[$form] = array();
                 } else {
-                    $data[$_form] = null;
+                    $data[$form] = null;
                 }
             }
         }

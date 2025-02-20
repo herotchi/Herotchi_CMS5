@@ -11,10 +11,11 @@ use App\Consts\MediaConsts;
 
 class IndexRequest extends FormRequest
 {
-    private $_forms = [
+    public $forms = [
         'media_flg',
         'alt',
         'release_flg',
+        'page',
     ];
 
     /**
@@ -39,6 +40,7 @@ class IndexRequest extends FormRequest
             'media_flg.*' => Rule::in(array_keys(MediaConsts::MEDIA_FLG_LIST)),
             'release_flg' => 'bail|nullable|array',
             'release_flg.*' => Rule::in(array_keys(MediaConsts::RELEASE_FLG_LIST)),
+            'page' => 'bail|nullable|integer|numeric',
         ];
     }
 
@@ -47,12 +49,12 @@ class IndexRequest extends FormRequest
     {
         $data = parent::validated($key = null, $default = null);
 
-        foreach ($this->_forms as $_form) {
-            if (!Arr::exists($data, $_form)) {
-                if ($_form === 'media_flg' || $_form === 'release_flg') {
-                    $data[$_form] = array();
+        foreach ($this->forms as $form) {
+            if (!Arr::exists($data, $form)) {
+                if ($form === 'media_flg' || $form === 'release_flg') {
+                    $data[$form] = array();
                 } else {
-                    $data[$_form] = null;
+                    $data[$form] = null;
                 }
             }
         }

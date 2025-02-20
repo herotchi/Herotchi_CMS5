@@ -9,12 +9,13 @@ use App\Consts\NewsConsts;
 
 class IndexRequest extends FormRequest
 {
-    private $_forms = [
+    public $forms = [
         'title',
         'link_flg',
         'release_date_from',
         'release_date_to',
         'release_flg',
+        'page',
     ];
 
     /**
@@ -41,6 +42,7 @@ class IndexRequest extends FormRequest
             'release_date_to' => 'bail|nullable|date_format:Y-m-d|after_or_equal:2019/01/01|before_or_equal:2037/12/31|after_or_equal:release_date_from',
             'release_flg' => 'bail|nullable|array',
             'release_flg.*' => Rule::in(array_keys(NewsConsts::RELEASE_FLG_LIST)),
+            'page' => 'bail|nullable|integer|numeric',
         ];
     }
 
@@ -49,12 +51,12 @@ class IndexRequest extends FormRequest
     {
         $data = parent::validated($key = null, $default = null);
 
-        foreach ($this->_forms as $_form) {
-            if (!Arr::exists($data, $_form)) {
-                if ($_form === 'link_flg' || $_form === 'release_flg') {
-                    $data[$_form] = array();
+        foreach ($this->forms as $form) {
+            if (!Arr::exists($data, $form)) {
+                if ($form === 'link_flg' || $form === 'release_flg') {
+                    $data[$form] = array();
                 } else {
-                    $data[$_form] = null;
+                    $data[$form] = null;
                 }
             }
         }
