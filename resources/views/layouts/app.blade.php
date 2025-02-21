@@ -31,6 +31,7 @@
             <main>
                 {{ $slot }}
             </main>
+            @include('layouts.footer')
             <x-toasts />
         </div>
     </body>
