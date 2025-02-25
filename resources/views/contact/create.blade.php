@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="お問い合わせ">
     <nav aria-label="パンくずリスト">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('top') }}">TOP</a></li>

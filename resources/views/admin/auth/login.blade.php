@@ -1,6 +1,4 @@
-<x-guest-layout>
-    
-
+<x-guest-layout title="管理画面 | ログイン">
     <form method="POST" action="{{ route('admin.create') }}" novalidate>
         @csrf
 

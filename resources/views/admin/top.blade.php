@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="TOP">
     <div class="row my-4">
         <div class="col-12">
             <div id="carouselExampleIndicators" class="carousel slide shadow">

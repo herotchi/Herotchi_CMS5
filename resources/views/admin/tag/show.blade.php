@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="タグ詳細">
     <nav aria-label="パンくずリスト">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.top') }}">TOP</a></li>

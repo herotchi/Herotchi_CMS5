@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="ログイン">
     
 
     <form method="POST" action="{{ route('login') }}" novalidate>

@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="ユーザー登録">
     <form method="POST" action="{{ route('register') }}" novalidate>
         @csrf
         <div class="row g-3 card mt-3 pt-2 pb-4 px-4 shadow">

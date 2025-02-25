@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="パスワード再設定">
     <form method="POST" action="{{ route('password.store') }}" novalidate>
         @csrf
 
