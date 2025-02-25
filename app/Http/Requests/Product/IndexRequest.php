@@ -13,11 +13,12 @@ use App\Consts\ProductConsts;
 
 class IndexRequest extends FormRequest
 {
-    private $_forms = [
+    public $forms = [
         'first_category_id',
         'second_category_id',
         'tag_ids',
         'keyword',
+        'page',
     ];
 
     /**
@@ -42,6 +43,7 @@ class IndexRequest extends FormRequest
             'tag_ids' => 'bail|nullable|array',
             'tag_ids.*' => 'integer|exists:tags,id',
             'keyword' => 'bail|nullable|string|max:' . ProductConsts::KEYWORD_LENGTH_MAX,
+            'page' => 'bail|nullable|integer|numeric',
         ];
     }
 
@@ -50,12 +52,12 @@ class IndexRequest extends FormRequest
     {
         $data = parent::validated($key = null, $default = null);
 
-        foreach ($this->_forms as $_form) {
-            if (!Arr::exists($data, $_form)) {
-                if ($_form === 'tag_ids') {
-                    $data[$_form] = array();
+        foreach ($this->forms as $form) {
+            if (!Arr::exists($data, $form)) {
+                if ($form === 'tag_ids') {
+                    $data[$form] = array();
                 } else {
-                    $data[$_form] = null;
+                    $data[$form] = null;
                 }
             }
         }

@@ -163,7 +163,8 @@ class Product extends Model
 
         $query->orderBy('id', 'desc');
 
-        $lists = $query->paginate(ProductConsts::PAGENATE_LIST_LIMIT);
+        $lists = $query->paginate(ProductConsts::PAGENATE_LIST_LIMIT, ['*'], 'page', $data['page']);
+        $lists->appends($data);
 
         return $lists;
     }

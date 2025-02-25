@@ -27,6 +27,14 @@ class ProductController extends Controller
         $tags = $tagModel->getLists();
 
         $input = $request->validated();
+
+        // 検索条件セッションを持っていて、GETパラメータがない場合
+        if ($request->session()->has('public_product') && !$request->hasAny($request->forms)) {
+            //　セッションから検索条件を取得する
+            $input = $request->session()->pull('public_product');
+        }
+        $request->session()->put('public_product', $input);
+
         $productModel = new Product();
         $lists = $productModel->getLists($input);
 
