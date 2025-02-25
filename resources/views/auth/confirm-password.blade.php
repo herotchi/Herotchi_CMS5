@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="パスワード確認">
     
 
     <form method="POST" action="{{ route('password.confirm') }}" novalidate>

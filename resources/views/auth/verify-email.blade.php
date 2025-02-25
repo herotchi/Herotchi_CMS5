@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="確認メール送信">
 
     <div class="row g-3 card mt-3 pt-2 pb-4 px-4 shadow">
 
