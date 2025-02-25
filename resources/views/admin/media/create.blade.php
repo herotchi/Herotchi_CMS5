@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout title="メディア登録">
     <nav aria-label="パンくずリスト">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('admin.top') }}">TOP</a></li>
@@ -6,7 +6,7 @@
         </ol>
     </nav>
 
-    <div class="card shadow mb-4">
+    <div class="card">
         <form action="{{ route('admin.media.store') }}" method="POST" enctype="multipart/form-data" novalidate>
             @csrf
             <div class="card-header">メディア登録</div>
