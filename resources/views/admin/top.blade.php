@@ -10,7 +10,7 @@
                 <div class="carousel-inner">
                     @foreach($carousels as $carousel)
                     <div class="carousel-item @if($loop->first) active @endif">
-                        <a href="{{ $carousel->url }}">
+                        <a href="{{ route('admin.media.show', $carousel) }}">
                             <img src="{{ asset($carousel->image) }}" class="d-block w-100" alt="{{ $carousel->alt }}">
                         </a>
                     </div>    
@@ -39,7 +39,7 @@
                     @foreach($pickUps as $pickUp)
                     <div class="card text-bg-light mb-2">
                         <div class="card-body">
-                            <a href="{{ $pickUp->url }}">
+                            <a href="{{ route('admin.media.show', $pickUp) }}">
                                 <img src="{{ asset($pickUp->image) }}" class="d-block w-100 h-auto" alt="{{ $carousel->alt }}">
                             </a>
                         </div>
@@ -61,18 +61,15 @@
                             @foreach($news as $list)
                             <p class="mb-1">{{ $list->release_date->format('Y年m月d日') }}</p>
                             <p class="ms-4 mb-4">
-                            @if ($list->link_flg == $NewsConsts::LINK_FLG_ON)
-                                <a href="{{ $list->url }}" target="_blank" rel="noopener noreferrer">
-                                    {{ $list->title }}<x-blank />
-                                </a>
-                            @else
-                                <a href="{{ route('news.show', $list) }}">
+                                <a href="{{ route('admin.news.show', $list) }}">
                                     {{ $list->title }}
+                                    @if ($list->link_flg == $NewsConsts::LINK_FLG_ON)
+                                        <x-blank />
+                                    @endif
                                 </a>
-                            @endif
                             </p>
                             @endforeach
-                            <a class="float-end" href="{{ route('news.index') }}">
+                            <a class="float-end" href="{{ route('admin.news.index') }}">
                                 <p>過去のお知らせを見る</p>
                             </a>
                         </div>
