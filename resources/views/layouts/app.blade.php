@@ -16,6 +16,11 @@
             @if ($title) | @endif{{ config('app.name', 'Laravel') }}
         </title>
 
+        <!-- favicon -->
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+        <link rel="apple-touch-icon" href="{{ asset('img/Herotchi_CMS.png') }}">
+        <link rel="icon" type="image/png" href="{{ asset('img/Herotchi_CMS.png') }}">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
