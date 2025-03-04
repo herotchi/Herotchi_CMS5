@@ -13,6 +13,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+
+        // ベーシック認証
+        $middleware->append(\App\Http\Middleware\BasicAuthMiddleware::class);
         
         // 非ログインユーザー用のリダイレクト設定
         $middleware->redirectGuestsTo(function (Request $request) {
