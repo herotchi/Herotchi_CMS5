@@ -15,7 +15,7 @@ class ProductConsts
     ];
     public const KEYWORD_LENGTH_MAX = 30;
 
-    public const IMAGE_FILE_DIR = 'products';
+    public const IMAGE_FILE_DIR = 'product';
     public const PRODUCT_NEWS_INSERT_MESSAGE = 'が製品情報に追加されました。';
     public const PRODUCT_NEWS_UPDATE_MESSAGE = 'の製品情報が更新されました。';
 
