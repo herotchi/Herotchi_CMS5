@@ -38,8 +38,8 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle @if($page=='admin.tag.create' || $page=='admin.tag.index' || $page=='admin.tag.show' || $page=='admin.tab.edit' || $page=='admin.tab.csv_upload') active @endif" 
-                        @if($page=='admin.tag.create' || $page=='admin.tag.index' || $page=='admin.tag.show' || $page=='admin.tag.edit' || $page=='admin.tab.csv_upload')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">タグ
+                    <a class="nav-link dropdown-toggle @if($page=='admin.tag.create' || $page=='admin.tag.index' || $page=='admin.tag.show' || $page=='admin.tag.edit' || $page=='admin.tag.csv_upload') active @endif" 
+                        @if($page=='admin.tag.create' || $page=='admin.tag.index' || $page=='admin.tag.show' || $page=='admin.tag.edit' || $page=='admin.tag.csv_upload')aria-current="page"@endif href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">タグ
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item @if($page=='admin.tag.create') active @endif" href="{{ route('admin.tag.create') }}">タグ登録</a></li>
