@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use App\Consts\TagConsts;
 use Illuminate\Support\Arr;
 
 class Tag extends Model
 {
+    use HasFactory;
     //
     protected $table = 'tags';
     protected $primaryKey = 'id';
