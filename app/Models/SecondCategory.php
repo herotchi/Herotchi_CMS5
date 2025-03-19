@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use App\Consts\SecondCategoryConsts;
 use Illuminate\Support\Arr;
 
 class SecondCategory extends Model
 {
+    use HasFactory;
     //
     protected $table = 'second_categories';
     protected $primaryKey = 'id';
