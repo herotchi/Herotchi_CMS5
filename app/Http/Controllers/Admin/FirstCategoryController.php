@@ -173,7 +173,7 @@ class FirstCategoryController extends Controller
                 $lines[$line + 1][$value] = $csv[$key];
             }
 
-            $validator = Validator::make($lines[$line + 1], $rules, __('validation'), $attributes);
+            $validator = Validator::make($lines[$line + 1], $rules, [], $attributes);
             // バリデーションエラーがあった場合
             if($validator->fails()) {
                 // エラーメッセージを「xx行目：エラーメッセージ」の形に整える
