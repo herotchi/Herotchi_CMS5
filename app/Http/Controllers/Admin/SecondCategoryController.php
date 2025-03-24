@@ -200,7 +200,7 @@ class SecondCategoryController extends Controller
                 $lines[$line + 1][$value] = $csv[$key];
             }
 
-            $validator = Validator::make($lines[$line + 1], $rules, __('validation'), $attributes);
+            $validator = Validator::make($lines[$line + 1], $rules, [], $attributes);
 
             // バリデーションエラーがあった場合
             if($validator->fails()) {
