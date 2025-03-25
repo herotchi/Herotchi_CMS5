@@ -137,6 +137,13 @@ class StoreTest extends TestCase
         // メールが1回送信されたことをアサート
         Mail::assertSent(ContactMail::class, 1);
 
+        // もう一度アクセスしなおすとセッション切れでトップページへ遷移
+        $response = $this->get(route('contact.complete'));
+        $response->assertRedirect(route('top'));
+        // セッションにメッセージが存在するか確認
+        $response->assertSessionHas('msg_failure', 'セッション期限が切れました。');
+
+
     }
 
 }
