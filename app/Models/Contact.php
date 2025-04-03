@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use App\Consts\ContactConsts;
 use Illuminate\Support\Arr;
@@ -13,6 +14,7 @@ use DateTime;
 
 class Contact extends Model
 {
+    use HasFactory;
     //
     protected $table = 'contacts';
     protected $primaryKey = 'id';
