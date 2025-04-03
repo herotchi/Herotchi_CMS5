@@ -59,14 +59,12 @@ class ContactController extends Controller
     {
         // レコードを取得
         $input = $request->session()->pull('contact');
+        if (!$input) {
+            $input = array();
+        }
+
         $model = new Contact();
         $query = $model->getAdminCsvExport($input);
-
-        // ヘッダー情報
-        $headers = [
-            'Content-type' => 'text/csv',
-            'Content-Disposition' => 'attachment;'
-        ];
 
         // ファイル名
         $fileName = 'お問い合わせ';
@@ -79,6 +77,13 @@ class ContactController extends Controller
         } else {
             $fileName = $fileName . '.csv';
         }
+        $encodedFileName = rawurlencode($fileName);
+
+        // ヘッダー情報
+        $headers = [
+            'Content-type' => 'text/csv',
+            'Content-Disposition' => "attachment; filename=" . $fileName . "; filename*=UTF-8''" . $encodedFileName
+        ];
 
         $callback = function() use ($query)
         {
@@ -116,6 +121,7 @@ class ContactController extends Controller
             fclose($stream);
         };
 
-        return response()->streamDownload($callback, $fileName, $headers);
+        //return response()->streamDownload($callback, $fileName, $headers);
+        return response()->streamDownload($callback, NULL, $headers);
     }
 }
