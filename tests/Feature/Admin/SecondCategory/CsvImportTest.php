@@ -95,10 +95,12 @@ class CsvImportTest extends TestCase
         $file = UploadedFile::fake()->image('test.jpg');
         $this->post($this->_url, ['csv_file' => $file])->assertInvalid(['csv_file' => 'CSVファイルには、以下のファイルタイプを指定してください。text/plain, text/csv']);
         // ファイルサイズ1024キロバイトより大きい
-        $file = UploadedFile::fake()->image('test.csv')->size(SecondCategoryConsts::CSV_FILE_MAX + 1);
+        //$file = UploadedFile::fake()->image('test.csv')->size(SecondCategoryConsts::CSV_FILE_MAX + 1);
+        $file = UploadedFile::fake()->create('test.csv', SecondCategoryConsts::CSV_FILE_MAX + 1);
         $this->post($this->_url, ['csv_file' => $file])->assertInvalid(['csv_file' => 'CSVファイルは、'. SecondCategoryConsts::CSV_FILE_MAX . ' KB以下']);
         // 正常
-        $file = UploadedFile::fake()->image('test.csv');
+        //$file = UploadedFile::fake()->image('test.csv');
+        $file = UploadedFile::fake()->create('test.csv');
         $this->post($this->_url, ['csv_file' => $file])->assertValid('csv_file');
     }
 

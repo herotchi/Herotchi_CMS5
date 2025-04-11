@@ -60,9 +60,10 @@ class StoreTest extends TestCase
     /** @test */
     public function バリデーション(): void
     {
+        // 管理者権限でログイン
         $this->actingAs($this->_admin, 'admin');
 
-        // リダイレクト
+        // 入力エラーでリダイレクト確認
         $this->from(route('admin.product.create'))
             ->post($this->_url, ['first_category_id' => ''])
             ->assertRedirect(route('admin.product.create'));
