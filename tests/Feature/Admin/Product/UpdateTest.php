@@ -255,8 +255,8 @@ class UpdateTest extends TestCase
         ]);
 
         // 元の画像ファイルは削除され、新しいファイルが保存される
-        dump(str_replace('storage/', '', $this->_product->image));
-        dump(ProductConsts::IMAGE_FILE_DIR . '/' . $file->hashName());
+        //dump(str_replace('storage/', '', $this->_product->image));
+        //dump(ProductConsts::IMAGE_FILE_DIR . '/' . $file->hashName());
         Storage::disk('public')->assertMissing(str_replace('storage/', '', $this->_product->image));
         Storage::disk('public')->assertExists(ProductConsts::IMAGE_FILE_DIR . '/' . $file->hashName());
     }

@@ -5,8 +5,6 @@ namespace Tests\Feature\Contact;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Mail;
@@ -121,7 +119,7 @@ class StoreTest extends TestCase
         // リダイレクト
         $response->assertRedirect(route('contact.complete'));
         $response = $this->get(route('contact.complete'));
-        $response->assertSee('000000000001'); // "aaa" が表示されているか確認
+        $response->assertSee('000000000001'); // お問い合わせ番号が表示されているか確認
 
         // DB存在チェック
         $this->assertDatabaseHas('contacts', [
@@ -142,8 +140,6 @@ class StoreTest extends TestCase
         $response->assertRedirect(route('top'));
         // セッションにメッセージが存在するか確認
         $response->assertSessionHas('msg_failure', 'セッション期限が切れました。');
-
-
     }
 
 }
